@@ -3,6 +3,6 @@
 <head>
 </head>
 <body>
-<jsp:forward page="CarBook?command=move_home_page"></jsp:forward>
+<jsp:forward page="/process_controller?command=move_home_page"></jsp:forward>
 </body>
 </html>

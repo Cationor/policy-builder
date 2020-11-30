@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    <tlib-version>1.0</tlib-version>
+    <short-name>ptg</short-name>
+    <uri>paginationtags</uri>
+    <tag>
+        <name>admin-clients-pagination</name>
+        <tag-class>com.kashuba.petproject.tag.AdminClientsPaginationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>admin-orders-pagination</name>
+        <tag-class>com.kashuba.petproject.tag.AdminOrdersPaginationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>admin-cars-pagination</name>
+        <tag-class>com.kashuba.petproject.tag.AdminCarsPaginationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>client-orders-pagination</name>
+        <tag-class>com.kashuba.petproject.tag.ClientOrdersPaginationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>client-cars-pagination</name>
+        <tag-class>com.kashuba.petproject.tag.ClientCarsPaginationTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>
