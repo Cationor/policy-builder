@@ -1,6 +1,5 @@
 package com.kashuba.petproject.controller;
 
-import com.kashuba.petproject.controller.Router;
 import com.kashuba.petproject.controller.command.ActionCommand;
 import com.kashuba.petproject.controller.command.CommandProvider;
 import com.kashuba.petproject.model.pool.ConnectionPool;
