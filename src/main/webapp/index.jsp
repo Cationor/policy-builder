@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-<body>
-<jsp:forward page="CarBook?command=move_home_page"></jsp:forward>
-</body>
+    <body>
+    <jsp:forward page="CarBook?command=move_home_page"></jsp:forward>
+    </body>
 </html>
