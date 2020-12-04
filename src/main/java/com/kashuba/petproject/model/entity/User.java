@@ -7,7 +7,7 @@ import java.util.Arrays;
  * <p>
  * Describes the basic characteristics of a user who interacts directly with the application.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class User extends Entity {
