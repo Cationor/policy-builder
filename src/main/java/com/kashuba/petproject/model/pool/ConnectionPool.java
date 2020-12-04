@@ -30,7 +30,7 @@ public class ConnectionPool {
     private static final String LOGIN = "db.login";
     private static final String PASSWORD = "db.password";
     private static final int POOL_SIZE = 8;
-    private static com.kashuba.petproject.model.pool.ConnectionPool connectionPool = new com.kashuba.petproject.model.pool.ConnectionPool();
+    private static ConnectionPool connectionPool = new ConnectionPool();
     private ResourceBundle bundle;
     private BlockingQueue<ProxyConnection> freeConnections;
     private ArrayDeque<ProxyConnection> givenConnections;
@@ -40,7 +40,7 @@ public class ConnectionPool {
      *
      * @return the instance
      */
-    public static com.kashuba.petproject.model.pool.ConnectionPool getInstance() {
+    public static ConnectionPool getInstance() {
         return connectionPool;
     }
 

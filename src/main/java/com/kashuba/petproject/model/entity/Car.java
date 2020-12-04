@@ -262,7 +262,7 @@ public class Car extends Entity {
             return false;
         }
 
-        com.kashuba.petproject.model.entity.Car car = (com.kashuba.petproject.model.entity.Car) obj;
+        Car car = (Car) obj;
 
         return carId == car.carId
                 && (model != null && model.equals(car.model))

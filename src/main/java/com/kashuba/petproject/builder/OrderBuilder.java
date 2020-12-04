@@ -33,7 +33,7 @@ public class OrderBuilder {
         order.setAmount((int) orderParameters.get(AMOUNT));
         order.setStatus((Order.Status) orderParameters.get(ORDER_STATUS));
         order.setCar(CarBuilder.buildCar(orderParameters));
-        order.setClient((Client) com.kashuba.petproject.builder.UserBuilder.buildUser(orderParameters));
+        order.setClient((Client) UserBuilder.buildUser(orderParameters));
 
         return order;
     }

@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.kashuba.petproject.util.ParameterKey.*;
-import static com.kashuba.petproject.util.ParameterKey.EMAIL;
 
 /**
  * The Activate client command.

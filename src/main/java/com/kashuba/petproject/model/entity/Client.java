@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @version 1.0
  * @see User
  */
-public class Client extends User {
+public class    Client extends User {
 
     /**
      * The enum Status.
@@ -140,7 +140,7 @@ public class Client extends User {
             return false;
         }
 
-        com.kashuba.petproject.model.entity.Client client = (com.kashuba.petproject.model.entity.Client) obj;
+        Client client = (Client) obj;
 
         return super.equals(obj)
                 && (firstName != null && firstName.equals(client.firstName))

@@ -10,14 +10,12 @@ import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.CarServiceImpl;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
-import com.kashuba.petproject.validator.OrderValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

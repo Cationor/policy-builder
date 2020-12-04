@@ -50,9 +50,9 @@ public enum CommandClientStatusAccess {
             LOG_OUT_USER,
             SWITCH_LOCALE));
 
-    private Set<com.kashuba.petproject.controller.command.CommandType> accessCommands;
+    private Set<CommandType> accessCommands;
 
-    CommandClientStatusAccess(Set<com.kashuba.petproject.controller.command.CommandType> accessCommands) {
+    CommandClientStatusAccess(Set<CommandType> accessCommands) {
         this.accessCommands = accessCommands;
     }
 
@@ -61,7 +61,7 @@ public enum CommandClientStatusAccess {
      *
      * @return the access commands
      */
-    public Set<com.kashuba.petproject.controller.command.CommandType> getAccessCommands() {
+    public Set<CommandType> getAccessCommands() {
         return this.accessCommands;
     }
 }

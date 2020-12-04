@@ -78,7 +78,7 @@ public class CarView extends Entity{
             return false;
         }
 
-        com.kashuba.petproject.model.entity.CarView carView = (com.kashuba.petproject.model.entity.CarView) o;
+        CarView carView = (CarView) o;
 
         return (exterior != null && exterior.equals(carView.exterior))
                 && (exteriorSmall != null && exteriorSmall.equals(carView.exteriorSmall))

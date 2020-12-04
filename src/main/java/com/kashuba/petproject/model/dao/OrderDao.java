@@ -14,9 +14,9 @@ import java.util.Map;
  *
  * @author Balashevich Gleb
  * @version 1.0
- * @see com.kashuba.petproject.model.dao.BaseDao
+ * @see BaseDao
  */
-public interface OrderDao extends com.kashuba.petproject.model.dao.BaseDao<Order> {
+public interface OrderDao extends BaseDao<Order> {
 
     /**
      * Update specific order status.

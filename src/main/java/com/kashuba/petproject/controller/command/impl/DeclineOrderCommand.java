@@ -16,11 +16,11 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.kashuba.petproject.util.ParameterKey.*;
-import static com.kashuba.petproject.util.ParameterKey.ORDER_INDEX;
 
 /**
  * The Decline order command.

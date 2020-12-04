@@ -192,7 +192,7 @@ public class Order extends Entity {
             return false;
         }
 
-        com.kashuba.petproject.model.entity.Order order = (com.kashuba.petproject.model.entity.Order) o;
+        Order order = (Order) o;
 
         return orderId == order.orderId
                 && (dateFrom == order.dateFrom) || (dateFrom != null && dateFrom.equals(order.dateFrom))

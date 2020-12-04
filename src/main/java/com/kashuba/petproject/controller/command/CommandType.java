@@ -41,9 +41,9 @@ public enum CommandType {
     PAGINATION(new PaginationCommand()),
     EMPTY(new EmptyCommand());
 
-    private com.kashuba.petproject.controller.command.ActionCommand command;
+    private ActionCommand command;
 
-    CommandType(com.kashuba.petproject.controller.command.ActionCommand command) {
+    CommandType(ActionCommand command) {
         this.command = command;
     }
 
@@ -52,7 +52,7 @@ public enum CommandType {
      *
      * @return the command
      */
-    public com.kashuba.petproject.controller.command.ActionCommand getCommand() {
+    public ActionCommand getCommand() {
         return command;
     }
 }

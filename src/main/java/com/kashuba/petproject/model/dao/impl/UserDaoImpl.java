@@ -1,11 +1,11 @@
 package com.kashuba.petproject.model.dao.impl;
 
-import com.kashuba.petproject.builder.UserBuilder;
 import com.kashuba.petproject.exception.DaoProjectException;
+import com.kashuba.petproject.builder.UserBuilder;
 import com.kashuba.petproject.model.dao.UserDao;
 import com.kashuba.petproject.model.entity.Client;
-import com.kashuba.petproject.model.entity.User;
 import com.kashuba.petproject.model.pool.ConnectionPool;
+import com.kashuba.petproject.model.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -3,9 +3,9 @@ package com.kashuba.petproject.builder;
 import com.kashuba.petproject.model.entity.Car;
 import com.kashuba.petproject.model.entity.CarView;
 
-import java.util.Map;
-
 import static com.kashuba.petproject.util.ParameterKey.*;
+
+import java.util.Map;
 
 /**
  * The type Car builder.
