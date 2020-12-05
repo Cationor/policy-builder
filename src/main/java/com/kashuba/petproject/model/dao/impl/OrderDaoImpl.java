@@ -9,11 +9,10 @@ import com.kashuba.petproject.model.entity.Order;
 import com.kashuba.petproject.model.entity.User;
 import com.kashuba.petproject.model.pool.ConnectionPool;
 import com.kashuba.petproject.util.DateConverter;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.sql.*;
 import java.util.*;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Order dao.
@@ -70,12 +69,12 @@ public class OrderDaoImpl implements OrderDao {
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(ADD_ORDER)) {
-            statement.setLong(1, (long) orderParameters.get(DATE_FROM));
-            statement.setLong(2, (long) orderParameters.get(DATE_TO));
-            statement.setInt(3, (int) orderParameters.get(AMOUNT));
-            statement.setInt(4, ((Order.Status) orderParameters.get(ORDER_STATUS)).ordinal());
-            statement.setLong(5, (long) orderParameters.get(CAR_ID));
-            statement.setLong(6, (long) orderParameters.get(USER_ID));
+            statement.setLong(1, (long) orderParameters.get(ParameterKey.DATE_FROM));
+            statement.setLong(2, (long) orderParameters.get(ParameterKey.DATE_TO));
+            statement.setInt(3, (int) orderParameters.get(ParameterKey.AMOUNT));
+            statement.setInt(4, ((Order.Status) orderParameters.get(ParameterKey.ORDER_STATUS)).ordinal());
+            statement.setLong(5, (long) orderParameters.get(ParameterKey.CAR_ID));
+            statement.setLong(6, (long) orderParameters.get(ParameterKey.USER_ID));
             isOrderAdded = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DaoProjectException("Error when executing a query to add an order", e);
@@ -172,13 +171,13 @@ public class OrderDaoImpl implements OrderDao {
             Iterator<Map.Entry<String, Object>> entries = orderParameters.entrySet().iterator();
             while (entries.hasNext()) {
                 String key = entries.next().getKey();
-                if (key.equals(MODEL)) {
+                if (key.equals(ParameterKey.MODEL)) {
                     findByParametersQuery.append(CHECK_CAR_MODEL);
                 }
-                if (key.equals(EMAIL)) {
+                if (key.equals(ParameterKey.EMAIL)) {
                     findByParametersQuery.append(CHECK_CLIENT_EMAIL);
                 }
-                if (key.equals(ORDER_STATUS)) {
+                if (key.equals(ParameterKey.ORDER_STATUS)) {
                     findByParametersQuery.append(CHECK_STATUS);
                 }
                 if (entries.hasNext()) {
@@ -191,14 +190,14 @@ public class OrderDaoImpl implements OrderDao {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(findByParametersQuery.toString())) {
             int columnIndex = 0;
-            if (orderParameters.containsKey(MODEL)) {
-                statement.setString(++columnIndex, (String) orderParameters.get(MODEL));
+            if (orderParameters.containsKey(ParameterKey.MODEL)) {
+                statement.setString(++columnIndex, (String) orderParameters.get(ParameterKey.MODEL));
             }
-            if (orderParameters.containsKey(EMAIL)) {
-                statement.setString(++columnIndex, (String) orderParameters.get(EMAIL));
+            if (orderParameters.containsKey(ParameterKey.EMAIL)) {
+                statement.setString(++columnIndex, (String) orderParameters.get(ParameterKey.EMAIL));
             }
-            if (orderParameters.containsKey(ORDER_STATUS)) {
-                statement.setInt(++columnIndex, ((Order.Status) orderParameters.get(ORDER_STATUS)).ordinal());
+            if (orderParameters.containsKey(ParameterKey.ORDER_STATUS)) {
+                statement.setInt(++columnIndex, ((Order.Status) orderParameters.get(ParameterKey.ORDER_STATUS)).ordinal());
             }
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -232,33 +231,33 @@ public class OrderDaoImpl implements OrderDao {
 
     private Order createOrder(ResultSet resultSet) throws SQLException {
         Map<String, Object> orderParameters = new HashMap<>();
-        orderParameters.put(ORDER_ID, resultSet.getLong(ORDER_ID));
-        orderParameters.put(DATE_FROM, DateConverter.convertToDate(resultSet.getLong(DATE_FROM)));
-        orderParameters.put(DATE_TO, DateConverter.convertToDate(resultSet.getLong(DATE_TO)));
-        orderParameters.put(AMOUNT, resultSet.getInt(AMOUNT));
-        orderParameters.put(ORDER_STATUS, Order.Status.getStatus(resultSet.getInt(ORDER_STATUS)));
+        orderParameters.put(ParameterKey.ORDER_ID, resultSet.getLong(ParameterKey.ORDER_ID));
+        orderParameters.put(ParameterKey.DATE_FROM, DateConverter.convertToDate(resultSet.getLong(ParameterKey.DATE_FROM)));
+        orderParameters.put(ParameterKey.DATE_TO, DateConverter.convertToDate(resultSet.getLong(ParameterKey.DATE_TO)));
+        orderParameters.put(ParameterKey.AMOUNT, resultSet.getInt(ParameterKey.AMOUNT));
+        orderParameters.put(ParameterKey.ORDER_STATUS, Order.Status.getStatus(resultSet.getInt(ParameterKey.ORDER_STATUS)));
 
-        orderParameters.put(CAR_ID, resultSet.getLong(ORDER_CAR_ID));
-        orderParameters.put(MODEL, resultSet.getString(CARS + DOT + MODEL));
-        orderParameters.put(CAR_TYPE, Car.Type.getType(resultSet.getInt(CARS + DOT + CAR_TYPE)));
-        orderParameters.put(NUMBER_SEATS, resultSet.getInt(CARS + DOT + NUMBER_SEATS));
-        orderParameters.put(RENT_COST, resultSet.getInt(CARS + DOT + RENT_COST));
-        orderParameters.put(FUEL_TYPE, Car.FuelType.getFuelType(resultSet.getInt(CARS + DOT + FUEL_TYPE)));
-        orderParameters.put(FUEL_CONSUMPTION, resultSet.getInt(CARS + DOT + FUEL_CONSUMPTION));
-        orderParameters.put(CAR_AVAILABLE, resultSet.getBoolean(CARS + DOT + CAR_AVAILABLE));
+        orderParameters.put(ParameterKey.CAR_ID, resultSet.getLong(ParameterKey.ORDER_CAR_ID));
+        orderParameters.put(ParameterKey.MODEL, resultSet.getString(ParameterKey.CARS + DOT + ParameterKey.MODEL));
+        orderParameters.put(ParameterKey.CAR_TYPE, Car.Type.getType(resultSet.getInt(ParameterKey.CARS + DOT + ParameterKey.CAR_TYPE)));
+        orderParameters.put(ParameterKey.NUMBER_SEATS, resultSet.getInt(ParameterKey.CARS + DOT + ParameterKey.NUMBER_SEATS));
+        orderParameters.put(ParameterKey.RENT_COST, resultSet.getInt(ParameterKey.CARS + DOT + ParameterKey.RENT_COST));
+        orderParameters.put(ParameterKey.FUEL_TYPE, Car.FuelType.getFuelType(resultSet.getInt(ParameterKey.CARS + DOT + ParameterKey.FUEL_TYPE)));
+        orderParameters.put(ParameterKey.FUEL_CONSUMPTION, resultSet.getInt(ParameterKey.CARS + DOT + ParameterKey.FUEL_CONSUMPTION));
+        orderParameters.put(ParameterKey.CAR_AVAILABLE, resultSet.getBoolean(ParameterKey.CARS + DOT + ParameterKey.CAR_AVAILABLE));
 
-        orderParameters.put(EXTERIOR, resultSet.getString(CAR_VIEWS + DOT + EXTERIOR));
-        orderParameters.put(EXTERIOR_SMALL, resultSet.getString(CAR_VIEWS + DOT + EXTERIOR_SMALL));
-        orderParameters.put(INTERIOR, resultSet.getString(CAR_VIEWS + DOT + INTERIOR));
+        orderParameters.put(ParameterKey.EXTERIOR, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.EXTERIOR));
+        orderParameters.put(ParameterKey.EXTERIOR_SMALL, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.EXTERIOR_SMALL));
+        orderParameters.put(ParameterKey.INTERIOR, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.INTERIOR));
 
-        orderParameters.put(USER_ID, resultSet.getLong(ORDER_CLIENT_ID));
-        orderParameters.put(EMAIL, resultSet.getString(USERS + DOT + EMAIL));
-        orderParameters.put(ROLE, User.Role.getUserRole(resultSet.getInt(USERS + DOT + ROLE)));
-        orderParameters.put(FIRST_NAME, resultSet.getString(USERS + DOT + FIRST_NAME));
-        orderParameters.put(SECOND_NAME, resultSet.getString(USERS + DOT + SECOND_NAME));
-        orderParameters.put(DRIVER_LICENSE, resultSet.getString(USERS + DOT + DRIVER_LICENSE));
-        orderParameters.put(PHONE_NUMBER, resultSet.getLong(USERS + DOT + PHONE_NUMBER));
-        orderParameters.put(CLIENT_STATUS, Client.Status.getClientStatus(resultSet.getInt(USERS + DOT + CLIENT_STATUS)));
+        orderParameters.put(ParameterKey.USER_ID, resultSet.getLong(ParameterKey.ORDER_CLIENT_ID));
+        orderParameters.put(ParameterKey.EMAIL, resultSet.getString(ParameterKey.USERS + DOT + ParameterKey.EMAIL));
+        orderParameters.put(ParameterKey.ROLE, User.Role.getUserRole(resultSet.getInt(ParameterKey.USERS + DOT + ParameterKey.ROLE)));
+        orderParameters.put(ParameterKey.FIRST_NAME, resultSet.getString(ParameterKey.USERS + DOT + ParameterKey.FIRST_NAME));
+        orderParameters.put(ParameterKey.SECOND_NAME, resultSet.getString(ParameterKey.USERS + DOT + ParameterKey.SECOND_NAME));
+        orderParameters.put(ParameterKey.DRIVER_LICENSE, resultSet.getString(ParameterKey.USERS + DOT + ParameterKey.DRIVER_LICENSE));
+        orderParameters.put(ParameterKey.PHONE_NUMBER, resultSet.getLong(ParameterKey.USERS + DOT + ParameterKey.PHONE_NUMBER));
+        orderParameters.put(ParameterKey.CLIENT_STATUS, Client.Status.getClientStatus(resultSet.getInt(ParameterKey.USERS + DOT + ParameterKey.CLIENT_STATUS)));
 
         return OrderBuilder.buildOrder(orderParameters);
     }

@@ -8,13 +8,12 @@ import com.kashuba.petproject.model.entity.User;
 import com.kashuba.petproject.model.service.UserService;
 import com.kashuba.petproject.util.PasswordEncryption;
 import com.kashuba.petproject.validator.UserValidator;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The User service.
@@ -37,18 +36,18 @@ public class UserServiceImpl implements UserService {
         if (UserValidator.validateClientParameters(clientParameters)) {
             try {
                 Map<String, Object> preparedClientParameters = new HashMap<>();
-                String encryptedPassword = PasswordEncryption.encryptPassword(clientParameters.get(PASSWORD));
+                String encryptedPassword = PasswordEncryption.encryptPassword(clientParameters.get(ParameterKey.PASSWORD));
                 if (!encryptedPassword.isEmpty()) {
-                    String normalizedPhone = clientParameters.get(PHONE_NUMBER).replaceAll(PUNCTUATION, EMPTY_VALUE);
+                    String normalizedPhone = clientParameters.get(ParameterKey.PHONE_NUMBER).replaceAll(PUNCTUATION, EMPTY_VALUE);
                     long phoneNumber = Long.parseLong(normalizedPhone);
-                    preparedClientParameters.put(EMAIL, clientParameters.get(EMAIL).toLowerCase());
-                    preparedClientParameters.put(PASSWORD, encryptedPassword);
-                    preparedClientParameters.put(ROLE, User.Role.CLIENT);
-                    preparedClientParameters.put(FIRST_NAME, clientParameters.get(FIRST_NAME));
-                    preparedClientParameters.put(SECOND_NAME, clientParameters.get(SECOND_NAME));
-                    preparedClientParameters.put(DRIVER_LICENSE, clientParameters.get(DRIVER_LICENSE));
-                    preparedClientParameters.put(PHONE_NUMBER, phoneNumber);
-                    preparedClientParameters.put(CLIENT_STATUS, Client.Status.PENDING);
+                    preparedClientParameters.put(ParameterKey.EMAIL, clientParameters.get(ParameterKey.EMAIL).toLowerCase());
+                    preparedClientParameters.put(ParameterKey.PASSWORD, encryptedPassword);
+                    preparedClientParameters.put(ParameterKey.ROLE, User.Role.CLIENT);
+                    preparedClientParameters.put(ParameterKey.FIRST_NAME, clientParameters.get(ParameterKey.FIRST_NAME));
+                    preparedClientParameters.put(ParameterKey.SECOND_NAME, clientParameters.get(ParameterKey.SECOND_NAME));
+                    preparedClientParameters.put(ParameterKey.DRIVER_LICENSE, clientParameters.get(ParameterKey.DRIVER_LICENSE));
+                    preparedClientParameters.put(ParameterKey.PHONE_NUMBER, phoneNumber);
+                    preparedClientParameters.put(ParameterKey.CLIENT_STATUS, Client.Status.PENDING);
                     isClientAdded = userDao.add(preparedClientParameters);
                 }
             } catch (DaoProjectException e) {

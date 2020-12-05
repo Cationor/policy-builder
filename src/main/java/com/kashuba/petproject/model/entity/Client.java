@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @version 1.0
  * @see User
  */
-public class    Client extends User {
+public class Client extends User {
 
     /**
      * The enum Status.

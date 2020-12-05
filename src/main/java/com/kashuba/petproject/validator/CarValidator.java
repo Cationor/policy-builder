@@ -1,10 +1,9 @@
 package com.kashuba.petproject.validator;
 
 import com.kashuba.petproject.model.entity.Car;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Car validator.
@@ -45,33 +44,33 @@ public class CarValidator {
     public static boolean validateCarParameters(Map<String, String> carParameters) {
         boolean isParametersCorrect = true;
 
-        if (!validateModel(carParameters.get(MODEL))) {
+        if (!validateModel(carParameters.get(ParameterKey.MODEL))) {
             isParametersCorrect = false;
-            carParameters.put(MODEL, EMPTY_VALUE);
+            carParameters.put(ParameterKey.MODEL, EMPTY_VALUE);
         }
-        if (!validateType(carParameters.get(CAR_TYPE))) {
+        if (!validateType(carParameters.get(ParameterKey.CAR_TYPE))) {
             isParametersCorrect = false;
-            carParameters.put(CAR_TYPE, EMPTY_VALUE);
+            carParameters.put(ParameterKey.CAR_TYPE, EMPTY_VALUE);
         }
-        if (!validateNumberSeats(carParameters.get(NUMBER_SEATS))) {
+        if (!validateNumberSeats(carParameters.get(ParameterKey.NUMBER_SEATS))) {
             isParametersCorrect = false;
-            carParameters.put(NUMBER_SEATS, EMPTY_VALUE);
+            carParameters.put(ParameterKey.NUMBER_SEATS, EMPTY_VALUE);
         }
-        if (!validateRentCost(carParameters.get(RENT_COST))) {
+        if (!validateRentCost(carParameters.get(ParameterKey.RENT_COST))) {
             isParametersCorrect = false;
-            carParameters.put(RENT_COST, EMPTY_VALUE);
+            carParameters.put(ParameterKey.RENT_COST, EMPTY_VALUE);
         }
-        if (!validateFuelType(carParameters.get(FUEL_TYPE))) {
+        if (!validateFuelType(carParameters.get(ParameterKey.FUEL_TYPE))) {
             isParametersCorrect = false;
-            carParameters.put(FUEL_TYPE, EMPTY_VALUE);
+            carParameters.put(ParameterKey.FUEL_TYPE, EMPTY_VALUE);
         }
-        if (!validateFuelConsumption(carParameters.get(FUEL_CONSUMPTION))) {
+        if (!validateFuelConsumption(carParameters.get(ParameterKey.FUEL_CONSUMPTION))) {
             isParametersCorrect = false;
-            carParameters.put(FUEL_CONSUMPTION, EMPTY_VALUE);
+            carParameters.put(ParameterKey.FUEL_CONSUMPTION, EMPTY_VALUE);
         }
-        if (!validateAvailable(carParameters.get(CAR_AVAILABLE))) {
+        if (!validateAvailable(carParameters.get(ParameterKey.CAR_AVAILABLE))) {
             isParametersCorrect = false;
-            carParameters.put(CAR_AVAILABLE, EMPTY_VALUE);
+            carParameters.put(ParameterKey.CAR_AVAILABLE, EMPTY_VALUE);
         }
 
         return isParametersCorrect;

@@ -11,6 +11,7 @@ import com.kashuba.petproject.model.service.ClientNotificationService;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.ClientNotificationServiceImpl;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,8 +21,6 @@ import javax.servlet.http.HttpSession;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Order car command.
@@ -43,11 +42,11 @@ public class OrderCarCommand implements ActionCommand {
         OrderService orderService = new OrderServiceImpl();
         ClientNotificationService clientNotificationService = new ClientNotificationServiceImpl();
         Map<String, String> orderParameters = new HashMap<>();
-        orderParameters.put(CAR_ID, request.getParameter(CAR_ID));
-        orderParameters.put(USER_ID, request.getParameter(USER_ID));
-        orderParameters.put(DATE_FROM, request.getParameter(DATE_FROM));
-        orderParameters.put(DATE_TO, request.getParameter(DATE_TO));
-        orderParameters.put(AMOUNT, request.getParameter(AMOUNT));
+        orderParameters.put(ParameterKey.CAR_ID, request.getParameter(ParameterKey.CAR_ID));
+        orderParameters.put(ParameterKey.USER_ID, request.getParameter(ParameterKey.USER_ID));
+        orderParameters.put(ParameterKey.DATE_FROM, request.getParameter(ParameterKey.DATE_FROM));
+        orderParameters.put(ParameterKey.DATE_TO, request.getParameter(ParameterKey.DATE_TO));
+        orderParameters.put(ParameterKey.AMOUNT, request.getParameter(ParameterKey.AMOUNT));
         HttpSession session = request.getSession();
         Router router;
 
@@ -64,7 +63,7 @@ public class OrderCarCommand implements ActionCommand {
             }
             router = new Router(PageName.NOTIFICATION.getPath());
         } catch (ServiceProjectException e) {
-            logger.log(Level.ERROR, "User Id" + orderParameters.get(USER_ID), e);
+            logger.log(Level.ERROR, "User Id" + orderParameters.get(ParameterKey.USER_ID), e);
             router = new Router(PageName.ERROR_500.getPath());
         }
 

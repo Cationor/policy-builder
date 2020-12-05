@@ -7,6 +7,7 @@ import com.kashuba.petproject.controller.command.PageName;
 import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.model.service.impl.CarServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,8 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Add car command.
@@ -39,24 +38,24 @@ public class AddCarCommand implements ActionCommand {
         CarService carService = new CarServiceImpl();
         HttpSession session = request.getSession();
         Map<String, String> carParameters = new HashMap<>();
-        carParameters.put(MODEL, request.getParameter(MODEL));
-        carParameters.put(CAR_TYPE, request.getParameter(CAR_TYPE));
-        carParameters.put(NUMBER_SEATS, request.getParameter(NUMBER_SEATS));
-        carParameters.put(RENT_COST, request.getParameter(RENT_COST));
-        carParameters.put(FUEL_TYPE, request.getParameter(FUEL_TYPE));
-        carParameters.put(FUEL_CONSUMPTION, request.getParameter(FUEL_CONSUMPTION));
-        carParameters.put(CAR_AVAILABLE, request.getParameter(CAR_AVAILABLE));
-        carParameters.put(EXTERIOR_SMALL, (String) session.getAttribute(EXTERIOR_SMALL));
-        carParameters.put(EXTERIOR, (String) session.getAttribute(EXTERIOR));
-        carParameters.put(INTERIOR, (String) session.getAttribute(INTERIOR));
+        carParameters.put(ParameterKey.MODEL, request.getParameter(ParameterKey.MODEL));
+        carParameters.put(ParameterKey.CAR_TYPE, request.getParameter(ParameterKey.CAR_TYPE));
+        carParameters.put(ParameterKey.NUMBER_SEATS, request.getParameter(ParameterKey.NUMBER_SEATS));
+        carParameters.put(ParameterKey.RENT_COST, request.getParameter(ParameterKey.RENT_COST));
+        carParameters.put(ParameterKey.FUEL_TYPE, request.getParameter(ParameterKey.FUEL_TYPE));
+        carParameters.put(ParameterKey.FUEL_CONSUMPTION, request.getParameter(ParameterKey.FUEL_CONSUMPTION));
+        carParameters.put(ParameterKey.CAR_AVAILABLE, request.getParameter(ParameterKey.CAR_AVAILABLE));
+        carParameters.put(ParameterKey.EXTERIOR_SMALL, (String) session.getAttribute(ParameterKey.EXTERIOR_SMALL));
+        carParameters.put(ParameterKey.EXTERIOR, (String) session.getAttribute(ParameterKey.EXTERIOR));
+        carParameters.put(ParameterKey.INTERIOR, (String) session.getAttribute(ParameterKey.INTERIOR));
         Router router;
 
         try {
             if (carService.addCar(carParameters)) {
                 session.removeAttribute(AttributeKey.CAR_LIST);
-                session.removeAttribute(EXTERIOR_SMALL);
-                session.removeAttribute(EXTERIOR);
-                session.removeAttribute(INTERIOR);
+                session.removeAttribute(ParameterKey.EXTERIOR_SMALL);
+                session.removeAttribute(ParameterKey.EXTERIOR);
+                session.removeAttribute(ParameterKey.INTERIOR);
                 request.setAttribute(AttributeKey.CAR_ADDED, true);
                 router = new Router(PageName.ADMIN_CARS.getPath());
             } else {
@@ -64,7 +63,7 @@ public class AddCarCommand implements ActionCommand {
                 router = new Router(PageName.CREATE_CAR.getPath());
             }
         } catch (ServiceProjectException e) {
-            logger.log(Level.ERROR, "Car model " + carParameters.get(MODEL), e);
+            logger.log(Level.ERROR, "Car model " + carParameters.get(ParameterKey.MODEL), e);
             router = new Router(PageName.ERROR_500.getPath());
         }
 

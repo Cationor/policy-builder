@@ -1,9 +1,9 @@
 package com.kashuba.petproject.validator;
 
+import com.kashuba.petproject.util.ParameterKey;
+
 import java.time.LocalDate;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Payment validator.
@@ -32,17 +32,17 @@ public class PaymentValidator {
      */
     public static boolean validatePaymentParameters(Map<String, String> paymentParameters) {
         boolean isPaymentCorrect = true;
-        if (!validateCardHolder(paymentParameters.get(CARD_HOLDER))) {
+        if (!validateCardHolder(paymentParameters.get(ParameterKey.CARD_HOLDER))) {
             isPaymentCorrect = false;
         }
-        if (!validateCardNumber(paymentParameters.get(CARD_NUMBER))) {
+        if (!validateCardNumber(paymentParameters.get(ParameterKey.CARD_NUMBER))) {
             isPaymentCorrect = false;
         }
-        if (!validateExpirationDate(paymentParameters.get(CARD_EXPIRATION_MONTH),
-                paymentParameters.get(CARD_EXPIRATION_YEAR))) {
+        if (!validateExpirationDate(paymentParameters.get(ParameterKey.CARD_EXPIRATION_MONTH),
+                paymentParameters.get(ParameterKey.CARD_EXPIRATION_YEAR))) {
             isPaymentCorrect = false;
         }
-        if (!validateCvvCode(paymentParameters.get(CARD_CVV_CODE))) {
+        if (!validateCvvCode(paymentParameters.get(ParameterKey.CARD_CVV_CODE))) {
             isPaymentCorrect = false;
         }
 

@@ -2,10 +2,9 @@ package com.kashuba.petproject.builder;
 
 import com.kashuba.petproject.model.entity.Client;
 import com.kashuba.petproject.model.entity.User;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The type User builder.
@@ -24,7 +23,7 @@ public class UserBuilder {
      * @return the user
      */
     public static User buildUser(Map<String, Object> userParameters) {
-        User.Role role = (User.Role) userParameters.get(ROLE);
+        User.Role role = (User.Role) userParameters.get(ParameterKey.ROLE);
         User buildingUser;
 
         if (role == User.Role.CLIENT) {
@@ -32,10 +31,10 @@ public class UserBuilder {
         } else {
             buildingUser = new User();
         }
-        if (userParameters.containsKey(USER_ID)) {
-            buildingUser.setUserId((long) userParameters.get(USER_ID));
+        if (userParameters.containsKey(ParameterKey.USER_ID)) {
+            buildingUser.setUserId((long) userParameters.get(ParameterKey.USER_ID));
         }
-        buildingUser.setEmail((String) userParameters.get(EMAIL));
+        buildingUser.setEmail((String) userParameters.get(ParameterKey.EMAIL));
         buildingUser.setRole(role);
 
         return buildingUser;
@@ -44,11 +43,11 @@ public class UserBuilder {
     private static Client buildClient(Map<String, Object> clientParameters) {
         Client buildingClient = new Client();
 
-        buildingClient.setFirstName((String) clientParameters.get(FIRST_NAME));
-        buildingClient.setSecondName((String) clientParameters.get(SECOND_NAME));
-        buildingClient.setDriverLicense((String) clientParameters.get(DRIVER_LICENSE));
-        buildingClient.setPhoneNumber((long) clientParameters.get(PHONE_NUMBER));
-        buildingClient.setStatus((Client.Status) clientParameters.get(CLIENT_STATUS));
+        buildingClient.setFirstName((String) clientParameters.get(ParameterKey.FIRST_NAME));
+        buildingClient.setSecondName((String) clientParameters.get(ParameterKey.SECOND_NAME));
+        buildingClient.setDriverLicense((String) clientParameters.get(ParameterKey.DRIVER_LICENSE));
+        buildingClient.setPhoneNumber((long) clientParameters.get(ParameterKey.PHONE_NUMBER));
+        buildingClient.setStatus((Client.Status) clientParameters.get(ParameterKey.CLIENT_STATUS));
 
         return buildingClient;
     }

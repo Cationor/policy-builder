@@ -85,10 +85,10 @@
                 </c:when>
                 <c:otherwise>
                     <c:if test="${empty noCars}">
-                        <label class="col-form-label"><fmt:message key="cars.choose_params"/></label></div>
+                        <label class="col-form-label"><fmt:message key="cars.choose_params"/></label>
                     </c:if>
                     <c:if test="${not empty noCars && !noCars}">
-                        <label class="col-form-label"><fmt:message key="cars.nothing_to_show"/></label></div>
+                        <label class="col-form-label"><fmt:message key="cars.nothing_to_show"/></label>
                     </c:if>
                 </c:otherwise>
             </c:choose>

@@ -4,6 +4,7 @@ import com.kashuba.petproject.controller.command.ActionCommand;
 import com.kashuba.petproject.controller.command.CommandProvider;
 import com.kashuba.petproject.model.pool.ConnectionPool;
 import com.kashuba.petproject.util.ParameterKey;
+import com.kashuba.petproject.controller.command.AttributeKey;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-import static com.kashuba.petproject.controller.command.AttributeKey.*;
 
 /**
  * The Process controller.
@@ -51,7 +50,7 @@ public class ProcessController extends HttpServlet {
         Router router = command.execute(request);
         String page = router.getPage();
         HttpSession session = request.getSession();
-        session.setAttribute(CURRENT_PAGE, page);
+        session.setAttribute(AttributeKey.CURRENT_PAGE, page);
 
         if (router.getTransition() == Router.Transition.FORWARD) {
             request.getRequestDispatcher(page).forward(request, response);

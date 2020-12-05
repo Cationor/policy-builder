@@ -8,6 +8,7 @@ import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.entity.Order;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Make order payment command.
@@ -42,11 +41,11 @@ public class MakeOrderPaymentCommand implements ActionCommand {
         HttpSession session = request.getSession();
         Order payableOrder = (Order) session.getAttribute(AttributeKey.PAYABLE_ORDER);
         Map<String, String> paymentParameters = new HashMap<>();
-        paymentParameters.put(CARD_HOLDER, request.getParameter(CARD_HOLDER));
-        paymentParameters.put(CARD_NUMBER, request.getParameter(CARD_NUMBER));
-        paymentParameters.put(CARD_EXPIRATION_MONTH, request.getParameter(CARD_EXPIRATION_MONTH));
-        paymentParameters.put(CARD_EXPIRATION_YEAR, request.getParameter(CARD_EXPIRATION_YEAR));
-        paymentParameters.put(CARD_CVV_CODE, request.getParameter(CARD_CVV_CODE));
+        paymentParameters.put(ParameterKey.CARD_HOLDER, request.getParameter(ParameterKey.CARD_HOLDER));
+        paymentParameters.put(ParameterKey.CARD_NUMBER, request.getParameter(ParameterKey.CARD_NUMBER));
+        paymentParameters.put(ParameterKey.CARD_EXPIRATION_MONTH, request.getParameter(ParameterKey.CARD_EXPIRATION_MONTH));
+        paymentParameters.put(ParameterKey.CARD_EXPIRATION_YEAR, request.getParameter(ParameterKey.CARD_EXPIRATION_YEAR));
+        paymentParameters.put(ParameterKey.CARD_CVV_CODE, request.getParameter(ParameterKey.CARD_CVV_CODE));
         Router router;
 
         try {

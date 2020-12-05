@@ -1,10 +1,9 @@
 package com.kashuba.petproject.validator;
 
 import com.kashuba.petproject.model.entity.Client;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The User validator.
@@ -35,29 +34,29 @@ public class UserValidator {
      */
     public static boolean validateClientParameters(Map<String, String> clientParameters) {
         boolean isParametersCorrect = true;
-        if (!validateEmail(clientParameters.get(EMAIL))) {
+        if (!validateEmail(clientParameters.get(ParameterKey.EMAIL))) {
             isParametersCorrect = false;
-            clientParameters.put(EMAIL, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.EMAIL, EMPTY_VALUE);
         }
-        if (!validatePasswords(clientParameters.get(PASSWORD), clientParameters.get(CONFIRM_PASSWORD))) {
+        if (!validatePasswords(clientParameters.get(ParameterKey.PASSWORD), clientParameters.get(ParameterKey.CONFIRM_PASSWORD))) {
             isParametersCorrect = false;
-            clientParameters.put(PASSWORD, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.PASSWORD, EMPTY_VALUE);
         }
-        if (!validateName(clientParameters.get(FIRST_NAME))) {
+        if (!validateName(clientParameters.get(ParameterKey.FIRST_NAME))) {
             isParametersCorrect = false;
-            clientParameters.put(FIRST_NAME, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.FIRST_NAME, EMPTY_VALUE);
         }
-        if (!validateName(clientParameters.get(SECOND_NAME))) {
+        if (!validateName(clientParameters.get(ParameterKey.SECOND_NAME))) {
             isParametersCorrect = false;
-            clientParameters.put(SECOND_NAME, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.SECOND_NAME, EMPTY_VALUE);
         }
-        if (!validateDriverLicense(clientParameters.get(DRIVER_LICENSE))) {
+        if (!validateDriverLicense(clientParameters.get(ParameterKey.DRIVER_LICENSE))) {
             isParametersCorrect = false;
-            clientParameters.put(DRIVER_LICENSE, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.DRIVER_LICENSE, EMPTY_VALUE);
         }
-        if (!validatePhoneNumber(clientParameters.get(PHONE_NUMBER))) {
+        if (!validatePhoneNumber(clientParameters.get(ParameterKey.PHONE_NUMBER))) {
             isParametersCorrect = false;
-            clientParameters.put(PHONE_NUMBER, EMPTY_VALUE);
+            clientParameters.put(ParameterKey.PHONE_NUMBER, EMPTY_VALUE);
         }
 
         return isParametersCorrect;

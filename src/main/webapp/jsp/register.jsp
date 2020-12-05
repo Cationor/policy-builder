@@ -37,7 +37,6 @@
                            autofocus required value="${registerParameters.get("email")}"
                            minlength="7" maxlength="255" onchange="this.setCustomValidity('')"
                            title="<fmt:message key="register.email"/>"
-                           onchange="this.setCustomValidity('')"
                            oninvalid="this.setCustomValidity('<fmt:message key="register.email.validation"/>')">
                 </div>
                 <c:if test='${not empty registerParameters && empty registerParameters.get("email")}'>

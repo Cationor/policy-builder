@@ -8,11 +8,10 @@ import com.kashuba.petproject.model.entity.Car;
 import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.validator.CarValidator;
 import com.kashuba.petproject.validator.OrderValidator;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.time.LocalDate;
 import java.util.*;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Car service.
@@ -37,30 +36,30 @@ public class CarServiceImpl implements CarService {
         try {
             if (CarValidator.validateCarParameters(carParameters)) {
                 Map<String, Object> carParametersChecked = new HashMap<>();
-                carParametersChecked.put(MODEL, carParameters.get(MODEL));
-                carParametersChecked.put(CAR_TYPE, Car.Type.valueOf(carParameters.get(CAR_TYPE).toUpperCase()));
-                carParametersChecked.put(NUMBER_SEATS, Integer.parseInt(carParameters.get(NUMBER_SEATS)));
-                carParametersChecked.put(RENT_COST, Integer.parseInt(carParameters.get(RENT_COST)));
-                carParametersChecked.put(FUEL_TYPE, Car.FuelType.valueOf(carParameters.get(FUEL_TYPE).toUpperCase()));
-                carParametersChecked.put(FUEL_CONSUMPTION, Integer.parseInt(carParameters.get(FUEL_CONSUMPTION)));
-                carParametersChecked.put(CAR_AVAILABLE, Boolean.parseBoolean(carParameters.get(CAR_AVAILABLE)));
-                String exteriorSmall = carParameters.get(EXTERIOR_SMALL);
-                String exterior = carParameters.get(EXTERIOR);
-                String interior = carParameters.get(INTERIOR);
+                carParametersChecked.put(ParameterKey.MODEL, carParameters.get(ParameterKey.MODEL));
+                carParametersChecked.put(ParameterKey.CAR_TYPE, Car.Type.valueOf(carParameters.get(ParameterKey.CAR_TYPE).toUpperCase()));
+                carParametersChecked.put(ParameterKey.NUMBER_SEATS, Integer.parseInt(carParameters.get(ParameterKey.NUMBER_SEATS)));
+                carParametersChecked.put(ParameterKey.RENT_COST, Integer.parseInt(carParameters.get(ParameterKey.RENT_COST)));
+                carParametersChecked.put(ParameterKey.FUEL_TYPE, Car.FuelType.valueOf(carParameters.get(ParameterKey.FUEL_TYPE).toUpperCase()));
+                carParametersChecked.put(ParameterKey.FUEL_CONSUMPTION, Integer.parseInt(carParameters.get(ParameterKey.FUEL_CONSUMPTION)));
+                carParametersChecked.put(ParameterKey.CAR_AVAILABLE, Boolean.parseBoolean(carParameters.get(ParameterKey.CAR_AVAILABLE)));
+                String exteriorSmall = carParameters.get(ParameterKey.EXTERIOR_SMALL);
+                String exterior = carParameters.get(ParameterKey.EXTERIOR);
+                String interior = carParameters.get(ParameterKey.INTERIOR);
                 if (exteriorSmall != null && !exteriorSmall.isEmpty()) {
-                    carParametersChecked.put(EXTERIOR_SMALL, carParameters.get(EXTERIOR_SMALL));
+                    carParametersChecked.put(ParameterKey.EXTERIOR_SMALL, carParameters.get(ParameterKey.EXTERIOR_SMALL));
                 } else {
-                    carParametersChecked.put(EXTERIOR_SMALL, DEFAULT_EXTERIOR_SMALL);
+                    carParametersChecked.put(ParameterKey.EXTERIOR_SMALL, DEFAULT_EXTERIOR_SMALL);
                 }
                 if (exterior != null && !exterior.isEmpty()) {
-                    carParametersChecked.put(EXTERIOR, carParameters.get(EXTERIOR));
+                    carParametersChecked.put(ParameterKey.EXTERIOR, carParameters.get(ParameterKey.EXTERIOR));
                 } else {
-                    carParametersChecked.put(EXTERIOR, DEFAULT_EXTERIOR);
+                    carParametersChecked.put(ParameterKey.EXTERIOR, DEFAULT_EXTERIOR);
                 }
                 if (interior != null && !interior.isEmpty()) {
-                    carParametersChecked.put(INTERIOR, carParameters.get(INTERIOR));
+                    carParametersChecked.put(ParameterKey.INTERIOR, carParameters.get(ParameterKey.INTERIOR));
                 } else {
-                    carParametersChecked.put(INTERIOR, DEFAULT_INTERIOR);
+                    carParametersChecked.put(ParameterKey.INTERIOR, DEFAULT_INTERIOR);
                 }
                 isCarAdded = carDao.add(carParametersChecked);
             }
@@ -74,8 +73,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean updateCar(Car updatingCar, Map<String, String> carParameters) throws ServiceProjectException {
         boolean isCarUpdated;
-        String carRentCostData = carParameters.get(RENT_COST);
-        String carAvailableData = carParameters.get(CAR_AVAILABLE);
+        String carRentCostData = carParameters.get(ParameterKey.RENT_COST);
+        String carAvailableData = carParameters.get(ParameterKey.CAR_AVAILABLE);
 
         if (CarValidator.validateRentCost(carRentCostData)) {
             updatingCar.setRentCost(Integer.parseInt(carRentCostData));
@@ -108,10 +107,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> findAvailableOrderCars(Map<String, String> carParametersData) throws ServiceProjectException {
-        String dateFromData = carParametersData.get(DATE_FROM);
-        String dateToData = carParametersData.get(DATE_TO);
-        String priceRangeData = carParametersData.get(PRICE_RANGE);
-        String carTypeData = carParametersData.get(CAR_TYPE);
+        String dateFromData = carParametersData.get(ParameterKey.DATE_FROM);
+        String dateToData = carParametersData.get(ParameterKey.DATE_TO);
+        String priceRangeData = carParametersData.get(ParameterKey.PRICE_RANGE);
+        String carTypeData = carParametersData.get(ParameterKey.CAR_TYPE);
         List<Car> targetCars = null;
 
         try {
@@ -121,15 +120,15 @@ public class CarServiceImpl implements CarService {
                 LocalDate dateTo = LocalDate.parse(dateToData);
                 LocalDate today = LocalDate.now();
                 if (dateFrom.toEpochDay() <= dateTo.toEpochDay() && dateFrom.toEpochDay() > today.toEpochDay()) {
-                    carParametersChecked.put(DATE_FROM, dateFrom);
-                    carParametersChecked.put(DATE_TO, dateTo);
+                    carParametersChecked.put(ParameterKey.DATE_FROM, dateFrom);
+                    carParametersChecked.put(ParameterKey.DATE_TO, dateTo);
                     if (CarValidator.validatePriceRangeData(priceRangeData)) {
                         String[] prices = priceRangeData.split(PRICE_DELIMITER);
-                        carParametersChecked.put(PRICE_FROM, Integer.parseInt(prices[0]));
-                        carParametersChecked.put(PRICE_TO, Integer.parseInt(prices[1]));
+                        carParametersChecked.put(ParameterKey.PRICE_FROM, Integer.parseInt(prices[0]));
+                        carParametersChecked.put(ParameterKey.PRICE_TO, Integer.parseInt(prices[1]));
                     }
                     if (CarValidator.validateType(carTypeData)) {
-                        carParametersChecked.put(CAR_TYPE, Car.Type.valueOf(carTypeData.toUpperCase()));
+                        carParametersChecked.put(ParameterKey.CAR_TYPE, Car.Type.valueOf(carTypeData.toUpperCase()));
                     }
                     targetCars = carDao.findAvailableOrderCars(carParametersChecked);
                 }
@@ -143,17 +142,17 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> findCarsByParameters(Map<String, String> carParametersData) throws ServiceProjectException {
-        String carTypeData = carParametersData.get(CAR_TYPE);
-        String carAvailableData = carParametersData.get(CAR_AVAILABLE);
+        String carTypeData = carParametersData.get(ParameterKey.CAR_TYPE);
+        String carAvailableData = carParametersData.get(ParameterKey.CAR_AVAILABLE);
         Map<String, Object> carParametersChecked = new HashMap<>();
         List<Car> targetCars;
 
         try {
             if (CarValidator.validateType(carTypeData)) {
-                carParametersChecked.put(CAR_TYPE, Car.Type.valueOf(carTypeData.toUpperCase()));
+                carParametersChecked.put(ParameterKey.CAR_TYPE, Car.Type.valueOf(carTypeData.toUpperCase()));
             }
             if (CarValidator.validateAvailable(carAvailableData)) {
-                carParametersChecked.put(CAR_AVAILABLE, Boolean.valueOf(carAvailableData));
+                carParametersChecked.put(ParameterKey.CAR_AVAILABLE, Boolean.valueOf(carAvailableData));
             }
             targetCars = carDao.findCarsByParameters(carParametersChecked);
 

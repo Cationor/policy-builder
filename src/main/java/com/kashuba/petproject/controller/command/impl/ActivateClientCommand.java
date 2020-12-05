@@ -7,13 +7,12 @@ import com.kashuba.petproject.controller.command.PageName;
 import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.service.UserService;
 import com.kashuba.petproject.model.service.impl.UserServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Activate client command.
@@ -33,7 +32,7 @@ public class ActivateClientCommand implements ActionCommand {
     @Override
     public Router execute(HttpServletRequest request) {
         UserService userService = new UserServiceImpl();
-        String clientEmail = request.getParameter(EMAIL);
+        String clientEmail = request.getParameter(ParameterKey.EMAIL);
         Router router;
 
         try {

@@ -10,6 +10,7 @@ import com.kashuba.petproject.model.service.ClientNotificationService;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.ClientNotificationServiceImpl;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,8 +20,6 @@ import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Decline order command.
@@ -42,7 +41,7 @@ public class DeclineOrderCommand implements ActionCommand {
         OrderService orderService = new OrderServiceImpl();
         ClientNotificationService clientNotificationService = new ClientNotificationServiceImpl();
         HttpSession session = request.getSession();
-        int orderIndex = Integer.parseInt(request.getParameter(ORDER_INDEX));
+        int orderIndex = Integer.parseInt(request.getParameter(ParameterKey.ORDER_INDEX));
         List<Order> orderList = ((ArrayList<Order>) session.getAttribute(AttributeKey.ORDER_LIST));
         Order decliningOrder = orderList.get(orderIndex);
         Router router;

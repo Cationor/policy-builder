@@ -6,6 +6,7 @@ import com.kashuba.petproject.model.dao.CarDao;
 import com.kashuba.petproject.model.entity.Car;
 import com.kashuba.petproject.model.pool.ConnectionPool;
 import com.kashuba.petproject.util.DateConverter;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Car dao.
@@ -76,18 +75,18 @@ public class CarDaoImpl implements CarDao {
             autocommit(connection, false);
             carStatement = connection.prepareStatement(ADD_CAR);
             carViewStatement = connection.prepareStatement(ADD_CAR_VIEW);
-            carStatement.setString(1, (String) parameters.get(MODEL));
-            carStatement.setInt(2, ((Car.Type) parameters.get(CAR_TYPE)).ordinal());
-            carStatement.setInt(3, (int) parameters.get(NUMBER_SEATS));
-            carStatement.setInt(4, (int) parameters.get(RENT_COST));
-            carStatement.setInt(5, ((Car.FuelType) parameters.get(FUEL_TYPE)).ordinal());
-            carStatement.setInt(6, (int) parameters.get(FUEL_CONSUMPTION));
-            carStatement.setBoolean(7, (boolean) parameters.get(CAR_AVAILABLE));
+            carStatement.setString(1, (String) parameters.get(ParameterKey.MODEL));
+            carStatement.setInt(2, ((Car.Type) parameters.get(ParameterKey.CAR_TYPE)).ordinal());
+            carStatement.setInt(3, (int) parameters.get(ParameterKey.NUMBER_SEATS));
+            carStatement.setInt(4, (int) parameters.get(ParameterKey.RENT_COST));
+            carStatement.setInt(5, ((Car.FuelType) parameters.get(ParameterKey.FUEL_TYPE)).ordinal());
+            carStatement.setInt(6, (int) parameters.get(ParameterKey.FUEL_CONSUMPTION));
+            carStatement.setBoolean(7, (boolean) parameters.get(ParameterKey.CAR_AVAILABLE));
             isCarAdded = carStatement.executeUpdate() > 0;
             if (isCarAdded) {
-                carViewStatement.setString(1, (String) parameters.get(EXTERIOR_SMALL));
-                carViewStatement.setString(2, (String) parameters.get(EXTERIOR));
-                carViewStatement.setString(3, (String) parameters.get(INTERIOR));
+                carViewStatement.setString(1, (String) parameters.get(ParameterKey.EXTERIOR_SMALL));
+                carViewStatement.setString(2, (String) parameters.get(ParameterKey.EXTERIOR));
+                carViewStatement.setString(3, (String) parameters.get(ParameterKey.INTERIOR));
                 isCarAdded = carViewStatement.executeUpdate() > 0;
             }
             connection.commit();
@@ -175,10 +174,10 @@ public class CarDaoImpl implements CarDao {
         List<Car> carList = new ArrayList<>();
         StringBuilder filteringAvailableCarsQuery = new StringBuilder();
         filteringAvailableCarsQuery.append(FIND_AVAILABLE_ORDER_CAR);
-        if (carParameters.containsKey(PRICE_FROM) && carParameters.containsKey(PRICE_TO)) {
+        if (carParameters.containsKey(ParameterKey.PRICE_FROM) && carParameters.containsKey(ParameterKey.PRICE_TO)) {
             filteringAvailableCarsQuery.append(AND_KEYWORD).append(CHECK_PRICE_RANGE);
         }
-        if (carParameters.containsKey(CAR_TYPE)) {
+        if (carParameters.containsKey(ParameterKey.CAR_TYPE)) {
             filteringAvailableCarsQuery.append(AND_KEYWORD).append(CHECK_CAR_TYPE);
         }
         filteringAvailableCarsQuery.append(AND_KEYWORD).append(CHECK_ORDERS_DATE_RANGE);
@@ -186,15 +185,15 @@ public class CarDaoImpl implements CarDao {
         try (Connection connection = pool.getConnection();
              PreparedStatement statement = connection.prepareStatement(filteringAvailableCarsQuery.toString())) {
             int parameterIndex = 0;
-            if (carParameters.containsKey(PRICE_FROM) && carParameters.containsKey(PRICE_TO)) {
-                statement.setInt(++parameterIndex, (int) carParameters.get(PRICE_FROM));
-                statement.setInt(++parameterIndex, (int) carParameters.get(PRICE_TO));
+            if (carParameters.containsKey(ParameterKey.PRICE_FROM) && carParameters.containsKey(ParameterKey.PRICE_TO)) {
+                statement.setInt(++parameterIndex, (int) carParameters.get(ParameterKey.PRICE_FROM));
+                statement.setInt(++parameterIndex, (int) carParameters.get(ParameterKey.PRICE_TO));
             }
-            if (carParameters.containsKey(CAR_TYPE)) {
-                statement.setInt(++parameterIndex, ((Car.Type) carParameters.get(CAR_TYPE)).ordinal());
+            if (carParameters.containsKey(ParameterKey.CAR_TYPE)) {
+                statement.setInt(++parameterIndex, ((Car.Type) carParameters.get(ParameterKey.CAR_TYPE)).ordinal());
             }
-            statement.setLong(++parameterIndex, DateConverter.convertToLong((LocalDate) carParameters.get(DATE_FROM)));
-            statement.setLong(++parameterIndex, DateConverter.convertToLong((LocalDate) carParameters.get(DATE_TO)));
+            statement.setLong(++parameterIndex, DateConverter.convertToLong((LocalDate) carParameters.get(ParameterKey.DATE_FROM)));
+            statement.setLong(++parameterIndex, DateConverter.convertToLong((LocalDate) carParameters.get(ParameterKey.DATE_TO)));
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 carList.add(createCar(resultSet));
@@ -211,13 +210,13 @@ public class CarDaoImpl implements CarDao {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         List<Car> targetCars = new ArrayList<>();
         StringBuilder findCheckCarsQuery = new StringBuilder(FIND_ALL);
-        if (carParameters.containsKey(CAR_TYPE) || carParameters.containsKey(CAR_AVAILABLE)) {
+        if (carParameters.containsKey(ParameterKey.CAR_TYPE) || carParameters.containsKey(ParameterKey.CAR_AVAILABLE)) {
             findCheckCarsQuery.append(WHERE_KEYWORD);
-            if (carParameters.containsKey(CAR_TYPE)) {
+            if (carParameters.containsKey(ParameterKey.CAR_TYPE)) {
                 findCheckCarsQuery.append(CHECK_CAR_TYPE);
             }
-            if (carParameters.containsKey(CAR_AVAILABLE)) {
-                if (carParameters.containsKey(CAR_TYPE)) {
+            if (carParameters.containsKey(ParameterKey.CAR_AVAILABLE)) {
+                if (carParameters.containsKey(ParameterKey.CAR_TYPE)) {
                     findCheckCarsQuery.append(AND_KEYWORD);
                 }
                 findCheckCarsQuery.append(CHECK_CAR_AVAILABLE);
@@ -227,11 +226,11 @@ public class CarDaoImpl implements CarDao {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(findCheckCarsQuery.toString())) {
             int parameterIndex = 0;
-            if (carParameters.containsKey(CAR_TYPE)) {
-                statement.setInt(++parameterIndex, ((Car.Type) carParameters.get(CAR_TYPE)).ordinal());
+            if (carParameters.containsKey(ParameterKey.CAR_TYPE)) {
+                statement.setInt(++parameterIndex, ((Car.Type) carParameters.get(ParameterKey.CAR_TYPE)).ordinal());
             }
-            if (carParameters.containsKey(CAR_AVAILABLE)) {
-                statement.setBoolean(++parameterIndex, (boolean) carParameters.get(CAR_AVAILABLE));
+            if (carParameters.containsKey(ParameterKey.CAR_AVAILABLE)) {
+                statement.setBoolean(++parameterIndex, (boolean) carParameters.get(ParameterKey.CAR_AVAILABLE));
             }
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -246,17 +245,17 @@ public class CarDaoImpl implements CarDao {
 
     private Car createCar(ResultSet resultSet) throws SQLException {
         Map<String, Object> carParameters = new HashMap<>();
-        carParameters.put(CAR_ID, resultSet.getLong(CAR_ID));
-        carParameters.put(MODEL, resultSet.getString(MODEL));
-        carParameters.put(CAR_TYPE, Car.Type.getType(resultSet.getInt(CAR_TYPE)));
-        carParameters.put(NUMBER_SEATS, resultSet.getInt(NUMBER_SEATS));
-        carParameters.put(RENT_COST, resultSet.getInt(RENT_COST));
-        carParameters.put(FUEL_TYPE, Car.FuelType.getFuelType(resultSet.getInt(FUEL_TYPE)));
-        carParameters.put(FUEL_CONSUMPTION, resultSet.getInt(FUEL_CONSUMPTION));
-        carParameters.put(CAR_AVAILABLE, resultSet.getBoolean(CAR_AVAILABLE));
-        carParameters.put(EXTERIOR, resultSet.getString(CAR_VIEWS + DOT + EXTERIOR));
-        carParameters.put(EXTERIOR_SMALL, resultSet.getString(CAR_VIEWS + DOT + EXTERIOR_SMALL));
-        carParameters.put(INTERIOR, resultSet.getString(CAR_VIEWS + DOT + INTERIOR));
+        carParameters.put(ParameterKey.CAR_ID, resultSet.getLong(ParameterKey.CAR_ID));
+        carParameters.put(ParameterKey.MODEL, resultSet.getString(ParameterKey.MODEL));
+        carParameters.put(ParameterKey.CAR_TYPE, Car.Type.getType(resultSet.getInt(ParameterKey.CAR_TYPE)));
+        carParameters.put(ParameterKey.NUMBER_SEATS, resultSet.getInt(ParameterKey.NUMBER_SEATS));
+        carParameters.put(ParameterKey.RENT_COST, resultSet.getInt(ParameterKey.RENT_COST));
+        carParameters.put(ParameterKey.FUEL_TYPE, Car.FuelType.getFuelType(resultSet.getInt(ParameterKey.FUEL_TYPE)));
+        carParameters.put(ParameterKey.FUEL_CONSUMPTION, resultSet.getInt(ParameterKey.FUEL_CONSUMPTION));
+        carParameters.put(ParameterKey.CAR_AVAILABLE, resultSet.getBoolean(ParameterKey.CAR_AVAILABLE));
+        carParameters.put(ParameterKey.EXTERIOR, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.EXTERIOR));
+        carParameters.put(ParameterKey.EXTERIOR_SMALL, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.EXTERIOR_SMALL));
+        carParameters.put(ParameterKey.INTERIOR, resultSet.getString(ParameterKey.CAR_VIEWS + DOT + ParameterKey.INTERIOR));
 
         return CarBuilder.buildCar(carParameters);
     }

@@ -8,6 +8,7 @@ import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.entity.Order;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Filter orders command.
@@ -41,9 +40,9 @@ public class FilterOrdersCommand implements ActionCommand {
     public Router execute(HttpServletRequest request) {
         OrderService orderService = new OrderServiceImpl();
         Map<String, String> orderParameters = new HashMap<>();
-        orderParameters.put(MODEL, request.getParameter(MODEL));
-        orderParameters.put(EMAIL, request.getParameter(EMAIL));
-        orderParameters.put(ORDER_STATUS, request.getParameter(ORDER_STATUS));
+        orderParameters.put(ParameterKey.MODEL, request.getParameter(ParameterKey.MODEL));
+        orderParameters.put(ParameterKey.EMAIL, request.getParameter(ParameterKey.EMAIL));
+        orderParameters.put(ParameterKey.ORDER_STATUS, request.getParameter(ParameterKey.ORDER_STATUS));
         HttpSession session = request.getSession();
         Router router;
 

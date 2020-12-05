@@ -10,6 +10,7 @@ import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.model.service.OrderService;
 import com.kashuba.petproject.model.service.impl.CarServiceImpl;
 import com.kashuba.petproject.model.service.impl.OrderServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,8 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Car card page command.
@@ -40,10 +39,10 @@ public class CarCardPageCommand implements ActionCommand {
     public Router execute(HttpServletRequest request) {
         CarService carService = new CarServiceImpl();
         OrderService orderService = new OrderServiceImpl();
-        long carId = Long.parseLong(request.getParameter(CAR_ID));
+        long carId = Long.parseLong(request.getParameter(ParameterKey.CAR_ID));
         Map<String, String> orderCarParameters = (HashMap) request.getSession().getAttribute(AttributeKey.CAR_PARAMETERS);
-        String dateFromData = orderCarParameters.get(DATE_FROM);
-        String dateToData = orderCarParameters.get(DATE_TO);
+        String dateFromData = orderCarParameters.get(ParameterKey.DATE_FROM);
+        String dateToData = orderCarParameters.get(ParameterKey.DATE_TO);
         Router router;
 
         try {

@@ -3,8 +3,6 @@ package com.kashuba.petproject.controller.command;
 import java.util.EnumSet;
 import java.util.Set;
 
-import static com.kashuba.petproject.controller.command.CommandType.*;
-
 /**
  * The enum Command role access.
  * <p>
@@ -21,53 +19,53 @@ public enum CommandRoleAccess {
     /**
      * Available commands for user role GUEST.
      */
-    GUEST(EnumSet.of(MOVE_LOGIN_PAGE,
-            MOVE_REGISTER_PAGE,
-            LOG_IN_USER,
-            REGISTER_CLIENT,
-            MOVE_HOME_PAGE,
-            MOVE_CARS_PAGE,
-            SWITCH_LOCALE,
-            ACTIVATE_CLIENT,
-            FIND_AVAILABLE_CARS,
-            PAGINATION)),
+    GUEST(EnumSet.of(CommandType.MOVE_LOGIN_PAGE,
+            CommandType.MOVE_REGISTER_PAGE,
+            CommandType.LOG_IN_USER,
+            CommandType.REGISTER_CLIENT,
+            CommandType.MOVE_HOME_PAGE,
+            CommandType.MOVE_CARS_PAGE,
+            CommandType.SWITCH_LOCALE,
+            CommandType.ACTIVATE_CLIENT,
+            CommandType.FIND_AVAILABLE_CARS,
+            CommandType.PAGINATION)),
 
     /**
      * Available commands for user role CLIENT.
      */
-    CLIENT(EnumSet.of(MOVE_HOME_PAGE,
-            MOVE_CARS_PAGE,
-            MOVE_CAR_CARD_PAGE,
-            MOVE_ORDERS_PAGE,
-            MOVE_PAYMENT_PAGE,
-            LOG_OUT_USER,
-            SWITCH_LOCALE,
-            ACTIVATE_CLIENT,
-            FIND_AVAILABLE_CARS,
-            ORDER_CAR,
-            MAKE_ORDER_PAYMENT,
-            UPDATE_ORDER_STATUS,
-            PAGINATION)),
+    CLIENT(EnumSet.of(CommandType.MOVE_HOME_PAGE,
+            CommandType.MOVE_CARS_PAGE,
+            CommandType.MOVE_CAR_CARD_PAGE,
+            CommandType.MOVE_ORDERS_PAGE,
+            CommandType.MOVE_PAYMENT_PAGE,
+            CommandType.LOG_OUT_USER,
+            CommandType.SWITCH_LOCALE,
+            CommandType.ACTIVATE_CLIENT,
+            CommandType.FIND_AVAILABLE_CARS,
+            CommandType.ORDER_CAR,
+            CommandType.MAKE_ORDER_PAYMENT,
+            CommandType.UPDATE_ORDER_STATUS,
+            CommandType.PAGINATION)),
 
     /**
      * Available commands for user role ADMIN.
      */
-    ADMIN(EnumSet.of(MOVE_HOME_PAGE,
-            MOVE_CARS_PAGE,
-            MOVE_USERS_PAGE,
-            MOVE_ORDERS_PAGE,
-            MOVE_CREATE_CAR_PAGE,
-            LOG_OUT_USER,
-            SWITCH_LOCALE,
-            FILTER_CARS,
-            UPDATE_CAR_PROPERTY,
-            ADD_CAR,
-            FILTER_ORDERS,
-            FILTER_USERS,
-            DECLINE_ORDER,
-            UPDATE_CLIENT_STATUS,
-            UPDATE_ORDER_STATUS,
-            PAGINATION));
+    ADMIN(EnumSet.of(CommandType.MOVE_HOME_PAGE,
+            CommandType.MOVE_CARS_PAGE,
+            CommandType.MOVE_USERS_PAGE,
+            CommandType.MOVE_ORDERS_PAGE,
+            CommandType.MOVE_CREATE_CAR_PAGE,
+            CommandType.LOG_OUT_USER,
+            CommandType.SWITCH_LOCALE,
+            CommandType.FILTER_CARS,
+            CommandType.UPDATE_CAR_PROPERTY,
+            CommandType.ADD_CAR,
+            CommandType.FILTER_ORDERS,
+            CommandType.FILTER_USERS,
+            CommandType.DECLINE_ORDER,
+            CommandType.UPDATE_CLIENT_STATUS,
+            CommandType.UPDATE_ORDER_STATUS,
+            CommandType.PAGINATION));
 
     private Set<CommandType> accessCommands;
 

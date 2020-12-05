@@ -6,14 +6,13 @@ import com.kashuba.petproject.model.dao.UserDao;
 import com.kashuba.petproject.model.entity.Client;
 import com.kashuba.petproject.model.pool.ConnectionPool;
 import com.kashuba.petproject.model.entity.User;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The type User dao.
@@ -62,14 +61,14 @@ public class UserDaoImpl implements UserDao {
 
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement statement = connection.prepareStatement(ADD_CLIENT)) {
-            statement.setString(1, (String) userParameters.get(EMAIL));
-            statement.setString(2, (String) userParameters.get(PASSWORD));
-            statement.setInt(3, ((User.Role) userParameters.get(ROLE)).ordinal());
-            statement.setString(4, (String) userParameters.get(FIRST_NAME));
-            statement.setString(5, (String) userParameters.get(SECOND_NAME));
-            statement.setString(6, (String) userParameters.get(DRIVER_LICENSE));
-            statement.setLong(7, (long) userParameters.get(PHONE_NUMBER));
-            statement.setInt(8, ((Client.Status) userParameters.get(CLIENT_STATUS)).ordinal());
+            statement.setString(1, (String) userParameters.get(ParameterKey.EMAIL));
+            statement.setString(2, (String) userParameters.get(ParameterKey.PASSWORD));
+            statement.setInt(3, ((User.Role) userParameters.get(ParameterKey.ROLE)).ordinal());
+            statement.setString(4, (String) userParameters.get(ParameterKey.FIRST_NAME));
+            statement.setString(5, (String) userParameters.get(ParameterKey.SECOND_NAME));
+            statement.setString(6, (String) userParameters.get(ParameterKey.DRIVER_LICENSE));
+            statement.setLong(7, (long) userParameters.get(ParameterKey.PHONE_NUMBER));
+            statement.setInt(8, ((Client.Status) userParameters.get(ParameterKey.CLIENT_STATUS)).ordinal());
             isClientAdded = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DaoProjectException("Error when executing a query to add a client", e);
@@ -183,7 +182,7 @@ public class UserDaoImpl implements UserDao {
             statement.setString(1, targetEmail);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                userPassword = resultSet.getString(PASSWORD);
+                userPassword = resultSet.getString(ParameterKey.PASSWORD);
             }
         } catch (SQLException e) {
             throw new DaoProjectException("Error when executing a query to find client password by a client email", e);
@@ -221,7 +220,7 @@ public class UserDaoImpl implements UserDao {
             statement.setString(1, targetEmail);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                email = resultSet.getString(EMAIL);
+                email = resultSet.getString(ParameterKey.EMAIL);
             }
         } catch (SQLException e) {
             throw new DaoProjectException("error when executing a query to check the existence of a user", e);
@@ -232,14 +231,14 @@ public class UserDaoImpl implements UserDao {
 
     private User createUser(ResultSet resultSet) throws SQLException {
         Map<String, Object> userParameters = new HashMap<>();
-        userParameters.put(USER_ID, resultSet.getLong(USER_ID));
-        userParameters.put(EMAIL, resultSet.getString(EMAIL));
-        userParameters.put(ROLE, User.Role.getUserRole(resultSet.getInt(ROLE)));
-        userParameters.put(FIRST_NAME, resultSet.getString(FIRST_NAME));
-        userParameters.put(SECOND_NAME, resultSet.getString(SECOND_NAME));
-        userParameters.put(DRIVER_LICENSE, resultSet.getString(DRIVER_LICENSE));
-        userParameters.put(PHONE_NUMBER, resultSet.getLong(PHONE_NUMBER));
-        userParameters.put(CLIENT_STATUS, Client.Status.getClientStatus(resultSet.getInt(CLIENT_STATUS)));
+        userParameters.put(ParameterKey.USER_ID, resultSet.getLong(ParameterKey.USER_ID));
+        userParameters.put(ParameterKey.EMAIL, resultSet.getString(ParameterKey.EMAIL));
+        userParameters.put(ParameterKey.ROLE, User.Role.getUserRole(resultSet.getInt(ParameterKey.ROLE)));
+        userParameters.put(ParameterKey.FIRST_NAME, resultSet.getString(ParameterKey.FIRST_NAME));
+        userParameters.put(ParameterKey.SECOND_NAME, resultSet.getString(ParameterKey.SECOND_NAME));
+        userParameters.put(ParameterKey.DRIVER_LICENSE, resultSet.getString(ParameterKey.DRIVER_LICENSE));
+        userParameters.put(ParameterKey.PHONE_NUMBER, resultSet.getLong(ParameterKey.PHONE_NUMBER));
+        userParameters.put(ParameterKey.CLIENT_STATUS, Client.Status.getClientStatus(resultSet.getInt(ParameterKey.CLIENT_STATUS)));
 
         return UserBuilder.buildUser(userParameters);
     }

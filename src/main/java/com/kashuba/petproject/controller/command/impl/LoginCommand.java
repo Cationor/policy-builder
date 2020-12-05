@@ -9,14 +9,13 @@ import com.kashuba.petproject.model.entity.Client;
 import com.kashuba.petproject.model.entity.User;
 import com.kashuba.petproject.model.service.UserService;
 import com.kashuba.petproject.model.service.impl.UserServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Login command.
@@ -38,8 +37,8 @@ public class LoginCommand implements ActionCommand {
     @Override
     public Router execute(HttpServletRequest request) {
         UserService userService = new UserServiceImpl();
-        String userEmail = request.getParameter(EMAIL);
-        String userPassword = request.getParameter(PASSWORD);
+        String userEmail = request.getParameter(ParameterKey.EMAIL);
+        String userPassword = request.getParameter(ParameterKey.PASSWORD);
         HttpSession session = request.getSession();
         Router router;
 

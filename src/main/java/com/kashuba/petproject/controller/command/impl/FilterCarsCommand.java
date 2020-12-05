@@ -8,6 +8,7 @@ import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.entity.Car;
 import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.model.service.impl.CarServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,8 +18,6 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Filter cars command.
@@ -39,8 +38,8 @@ public class FilterCarsCommand implements ActionCommand {
     public Router execute(HttpServletRequest request) {
         Map<String, String> carParameters = new HashMap<>();
         CarService carService = new CarServiceImpl();
-        carParameters.put(CAR_TYPE, request.getParameter(CAR_TYPE));
-        carParameters.put(CAR_AVAILABLE, request.getParameter(CAR_AVAILABLE));
+        carParameters.put(ParameterKey.CAR_TYPE, request.getParameter(ParameterKey.CAR_TYPE));
+        carParameters.put(ParameterKey.CAR_AVAILABLE, request.getParameter(ParameterKey.CAR_AVAILABLE));
         HttpSession session = request.getSession();
         Router router;
 

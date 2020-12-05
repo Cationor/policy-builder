@@ -9,6 +9,7 @@ import com.kashuba.petproject.model.service.ClientNotificationService;
 import com.kashuba.petproject.model.service.UserService;
 import com.kashuba.petproject.model.service.impl.ClientNotificationServiceImpl;
 import com.kashuba.petproject.model.service.impl.UserServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,8 +17,6 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Register client command.
@@ -40,22 +39,22 @@ public class RegisterClientCommand implements ActionCommand {
     public Router execute(HttpServletRequest request) {
         UserService userService = new UserServiceImpl();
         ClientNotificationService clientNotificationService;
-        Map<String, String> clientParameters = new HashMap();
-        clientParameters.put(EMAIL, request.getParameter(EMAIL));
-        clientParameters.put(PASSWORD, request.getParameter(PASSWORD));
-        clientParameters.put(CONFIRM_PASSWORD, request.getParameter(CONFIRM_PASSWORD));
-        clientParameters.put(FIRST_NAME, request.getParameter(FIRST_NAME));
-        clientParameters.put(SECOND_NAME, request.getParameter(SECOND_NAME));
-        clientParameters.put(DRIVER_LICENSE, request.getParameter(DRIVER_LICENSE));
-        clientParameters.put(PHONE_NUMBER, request.getParameter(PHONE_NUMBER));
+        Map<String, String> clientParameters = new HashMap<>();
+        clientParameters.put(ParameterKey.EMAIL, request.getParameter(ParameterKey.EMAIL));
+        clientParameters.put(ParameterKey.PASSWORD, request.getParameter(ParameterKey.PASSWORD));
+        clientParameters.put(ParameterKey.CONFIRM_PASSWORD, request.getParameter(ParameterKey.CONFIRM_PASSWORD));
+        clientParameters.put(ParameterKey.FIRST_NAME, request.getParameter(ParameterKey.FIRST_NAME));
+        clientParameters.put(ParameterKey.SECOND_NAME, request.getParameter(ParameterKey.SECOND_NAME));
+        clientParameters.put(ParameterKey.DRIVER_LICENSE, request.getParameter(ParameterKey.DRIVER_LICENSE));
+        clientParameters.put(ParameterKey.PHONE_NUMBER, request.getParameter(ParameterKey.PHONE_NUMBER));
         Router router;
 
         try {
-            if (!userService.existUser(clientParameters.get(EMAIL))) {
+            if (!userService.existUser(clientParameters.get(ParameterKey.EMAIL))) {
                 if (userService.add(clientParameters)) {
                     clientNotificationService = new ClientNotificationServiceImpl();
-                    clientNotificationService.registerMailNotification(clientParameters.get(EMAIL),
-                            clientParameters.get(FIRST_NAME), request.getRequestURL().toString());
+                    clientNotificationService.registerMailNotification(clientParameters.get(ParameterKey.EMAIL),
+                            clientParameters.get(ParameterKey.FIRST_NAME), request.getRequestURL().toString());
                     request.setAttribute(AttributeKey.SUCCESSFUL_REGISTRATION, true);
                     router = new Router(PageName.NOTIFICATION.getPath());
                 } else {
@@ -67,7 +66,7 @@ public class RegisterClientCommand implements ActionCommand {
                 router = new Router(PageName.REGISTER.getPath());
             }
         } catch (ServiceProjectException e) {
-            logger.log(Level.ERROR, "User Email" + clientParameters.get(EMAIL), e);
+            logger.log(Level.ERROR, "User Email" + clientParameters.get(ParameterKey.EMAIL), e);
             router = new Router(PageName.ERROR_500.getPath());
         }
 

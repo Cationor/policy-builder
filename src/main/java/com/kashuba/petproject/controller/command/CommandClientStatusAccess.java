@@ -3,8 +3,6 @@ package com.kashuba.petproject.controller.command;
 import java.util.EnumSet;
 import java.util.Set;
 
-import static com.kashuba.petproject.controller.command.CommandType.*;
-
 /**
  * The enum Command client status access.
  * <p>
@@ -21,34 +19,34 @@ public enum CommandClientStatusAccess {
     /**
      * Available commands for client status PENDING
      */
-    PENDING(EnumSet.of(MOVE_HOME_PAGE,
-            MOVE_CARS_PAGE,
-            LOG_OUT_USER,
-            SWITCH_LOCALE,
-            ACTIVATE_CLIENT,
-            FIND_AVAILABLE_CARS,
-            PAGINATION)),
+    PENDING(EnumSet.of(CommandType.MOVE_HOME_PAGE,
+            CommandType.MOVE_CARS_PAGE,
+            CommandType.LOG_OUT_USER,
+            CommandType.SWITCH_LOCALE,
+            CommandType.ACTIVATE_CLIENT,
+            CommandType.FIND_AVAILABLE_CARS,
+            CommandType.PAGINATION)),
     /**
      * Available commands for client status ACTIVE
      */
-    ACTIVE(EnumSet.of(MOVE_HOME_PAGE,
-            MOVE_CARS_PAGE,
-            MOVE_CAR_CARD_PAGE,
-            MOVE_ORDERS_PAGE,
-            MOVE_PAYMENT_PAGE,
-            LOG_OUT_USER,
-            SWITCH_LOCALE,
-            FIND_AVAILABLE_CARS,
-            ORDER_CAR,
-            MAKE_ORDER_PAYMENT,
-            UPDATE_ORDER_STATUS,
-            PAGINATION)),
+    ACTIVE(EnumSet.of(CommandType.MOVE_HOME_PAGE,
+            CommandType.MOVE_CARS_PAGE,
+            CommandType.MOVE_CAR_CARD_PAGE,
+            CommandType.MOVE_ORDERS_PAGE,
+            CommandType.MOVE_PAYMENT_PAGE,
+            CommandType.LOG_OUT_USER,
+            CommandType.SWITCH_LOCALE,
+            CommandType.FIND_AVAILABLE_CARS,
+            CommandType.ORDER_CAR,
+            CommandType.MAKE_ORDER_PAYMENT,
+            CommandType.UPDATE_ORDER_STATUS,
+            CommandType.PAGINATION)),
     /**
      * Available commands for client status BLOCKED
      */
-    BLOCKED(EnumSet.of(MOVE_HOME_PAGE,
-            LOG_OUT_USER,
-            SWITCH_LOCALE));
+    BLOCKED(EnumSet.of(CommandType.MOVE_HOME_PAGE,
+            CommandType.LOG_OUT_USER,
+            CommandType.SWITCH_LOCALE));
 
     private Set<CommandType> accessCommands;
 

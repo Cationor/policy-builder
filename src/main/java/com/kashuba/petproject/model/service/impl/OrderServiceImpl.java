@@ -11,14 +11,13 @@ import com.kashuba.petproject.validator.CarValidator;
 import com.kashuba.petproject.validator.OrderValidator;
 import com.kashuba.petproject.validator.PaymentValidator;
 import com.kashuba.petproject.validator.UserValidator;
+import com.kashuba.petproject.util.ParameterKey;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Order service.
@@ -37,14 +36,14 @@ public class OrderServiceImpl implements OrderService {
     public boolean add(Map<String, String> orderParameters) throws ServiceProjectException {
         boolean isOrderAdded;
         Map<String, Object> preparedOrderParameters = new HashMap<>();
-        LocalDate dateFrom = LocalDate.parse(orderParameters.get(DATE_FROM));
-        LocalDate dateTo = LocalDate.parse(orderParameters.get(DATE_TO));
-        preparedOrderParameters.put(DATE_FROM, DateConverter.convertToLong(dateFrom));
-        preparedOrderParameters.put(DATE_TO, DateConverter.convertToLong(dateTo));
-        preparedOrderParameters.put(CAR_ID, Long.parseLong(orderParameters.get(CAR_ID)));
-        preparedOrderParameters.put(USER_ID, Long.parseLong(orderParameters.get(USER_ID)));
-        preparedOrderParameters.put(AMOUNT, Integer.parseInt(orderParameters.get(AMOUNT)));
-        preparedOrderParameters.put(ORDER_STATUS, Order.Status.PENDING);
+        LocalDate dateFrom = LocalDate.parse(orderParameters.get(ParameterKey.DATE_FROM));
+        LocalDate dateTo = LocalDate.parse(orderParameters.get(ParameterKey.DATE_TO));
+        preparedOrderParameters.put(ParameterKey.DATE_FROM, DateConverter.convertToLong(dateFrom));
+        preparedOrderParameters.put(ParameterKey.DATE_TO, DateConverter.convertToLong(dateTo));
+        preparedOrderParameters.put(ParameterKey.CAR_ID, Long.parseLong(orderParameters.get(ParameterKey.CAR_ID)));
+        preparedOrderParameters.put(ParameterKey.USER_ID, Long.parseLong(orderParameters.get(ParameterKey.USER_ID)));
+        preparedOrderParameters.put(ParameterKey.AMOUNT, Integer.parseInt(orderParameters.get(ParameterKey.AMOUNT)));
+        preparedOrderParameters.put(ParameterKey.ORDER_STATUS, Order.Status.PENDING);
 
         try {
             isOrderAdded = orderDao.add(preparedOrderParameters);
@@ -147,19 +146,19 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrdersByParameters(Map<String, String> orderParameters) throws ServiceProjectException {
         List<Order> targetOrders;
         Map<String, Object> orderParametersChecked = new HashMap<>();
-        String statusData = orderParameters.get(ORDER_STATUS);
-        String clientEmailData = orderParameters.get(EMAIL);
-        String carModelData = orderParameters.get(MODEL);
+        String statusData = orderParameters.get(ParameterKey.ORDER_STATUS);
+        String clientEmailData = orderParameters.get(ParameterKey.EMAIL);
+        String carModelData = orderParameters.get(ParameterKey.MODEL);
 
         try {
             if (OrderValidator.validateStatus(statusData)) {
-                orderParametersChecked.put(ORDER_STATUS, Order.Status.valueOf(statusData.toUpperCase()));
+                orderParametersChecked.put(ParameterKey.ORDER_STATUS, Order.Status.valueOf(statusData.toUpperCase()));
             }
             if (UserValidator.validateEmail(clientEmailData)) {
-                orderParametersChecked.put(EMAIL, clientEmailData);
+                orderParametersChecked.put(ParameterKey.EMAIL, clientEmailData);
             }
             if (CarValidator.validateModel(carModelData)) {
-                orderParametersChecked.put(MODEL, carModelData);
+                orderParametersChecked.put(ParameterKey.MODEL, carModelData);
             }
             if (!orderParametersChecked.isEmpty()) {
                 targetOrders = orderDao.findOrdersByParameters(orderParametersChecked);

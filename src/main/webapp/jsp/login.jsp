@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-4 input-column">
                     <input class="form-control" name="email" type="email" autofocus required
-                           minlength="7" maxlength="255" onchange="this.setCustomValidity('')"
+                           minlength="7" maxlength="255"
                            title="<fmt:message key="login.email"/>"
                            onchange="this.setCustomValidity('')"
                            oninvalid="this.setCustomValidity('<fmt:message key="login.email.validation"/>')">
@@ -49,7 +49,7 @@
                 <div class="col-4 input-column">
                     <input class="form-control" name="password" type="password" required
                            pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,30}" minlength="8"
-                           maxlength="30" onchange="this.setCustomValidity('')"
+                           maxlength="30"
                            title="<fmt:message key="login.password"/>"
                            onchange="this.setCustomValidity('')"
                            oninvalid="this.setCustomValidity('<fmt:message key="login.password.validation"/>')">

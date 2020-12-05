@@ -8,6 +8,7 @@ import com.kashuba.petproject.exception.ServiceProjectException;
 import com.kashuba.petproject.model.entity.Car;
 import com.kashuba.petproject.model.service.CarService;
 import com.kashuba.petproject.model.service.impl.CarServiceImpl;
+import com.kashuba.petproject.util.ParameterKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,8 +18,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Update car property command.
@@ -39,9 +38,9 @@ public class UpdateCarPropertyCommand implements ActionCommand {
     public Router execute(HttpServletRequest request) {
         CarService carService = new CarServiceImpl();
         Map<String, String> carParameters = new HashMap<>();
-        carParameters.put(RENT_COST, request.getParameter(RENT_COST));
-        carParameters.put(CAR_AVAILABLE, request.getParameter(CAR_AVAILABLE));
-        int carIndex = Integer.parseInt(request.getParameter(CAR_INDEX));
+        carParameters.put(ParameterKey.RENT_COST, request.getParameter(ParameterKey.RENT_COST));
+        carParameters.put(ParameterKey.CAR_AVAILABLE, request.getParameter(ParameterKey.CAR_AVAILABLE));
+        int carIndex = Integer.parseInt(request.getParameter(ParameterKey.CAR_INDEX));
         HttpSession session = request.getSession();
         Car updatingCar = ((ArrayList<Car>) session.getAttribute(AttributeKey.CAR_LIST)).get(carIndex);
         Router router;

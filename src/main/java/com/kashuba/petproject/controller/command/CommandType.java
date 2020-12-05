@@ -3,6 +3,7 @@ package com.kashuba.petproject.controller.command;
 import com.kashuba.petproject.controller.command.impl.*;
 import com.kashuba.petproject.controller.command.impl.pagecommand.*;
 
+
 /**
  * The enum Command type.
  * <p>
