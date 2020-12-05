@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  * about the successful or not activation of the account.
  * Account activation provides the user with full use of the resource.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class ActivateClientCommand implements ActionCommand {

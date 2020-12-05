@@ -12,7 +12,7 @@ import java.util.Set;
  * the web filter {@code ClientStatusSecurityFilter} can pass requests to execute a particular
  * command {@code CommandType} or block access.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public enum CommandClientStatusAccess {

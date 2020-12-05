@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 /**
  * The type Pagination command.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class PaginationCommand implements ActionCommand {

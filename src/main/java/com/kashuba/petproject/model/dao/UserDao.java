@@ -14,7 +14,7 @@ import java.util.Optional;
  * methods for the interaction of the application with User entities in the database.
  *
  * @version 1.0
- * @see BaseDao * @author Balashevich Gleb
+ * @see BaseDao * @author Kiryl Kashuba
  */
 public interface UserDao extends BaseDao<User> {
 

@@ -5,7 +5,7 @@ package com.kashuba.petproject.util;
  * <p>
  * Describes the parameter names of entity objects
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class ParameterKey {

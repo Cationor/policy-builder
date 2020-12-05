@@ -18,7 +18,7 @@ import java.util.*;
  * The type User dao.
  * {@code UserDao} interface implementation
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see UserDao
  */

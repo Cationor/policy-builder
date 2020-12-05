@@ -20,7 +20,7 @@ import java.util.Optional;
  * <p>
  * Implements an interface UserService for processing user-related data
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see UserService
  */

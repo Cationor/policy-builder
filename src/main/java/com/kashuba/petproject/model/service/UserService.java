@@ -13,7 +13,7 @@ import java.util.Optional;
  * <p>
  * Indicates methods for processing information related to users.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface UserService {

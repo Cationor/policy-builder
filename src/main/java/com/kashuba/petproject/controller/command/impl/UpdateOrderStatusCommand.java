@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * is forwarding to the current page where he is informed about the successful or
  * unsuccessful change of the order status.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class UpdateOrderStatusCommand implements ActionCommand {

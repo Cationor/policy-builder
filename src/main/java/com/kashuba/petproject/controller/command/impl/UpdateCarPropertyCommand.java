@@ -28,7 +28,7 @@ import java.util.Map;
  * (version for the administrator) with a corresponding message about the successful
  * or unsuccessful change of the car parameters.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class UpdateCarPropertyCommand implements ActionCommand {

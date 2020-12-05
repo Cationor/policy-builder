@@ -31,7 +31,7 @@ import java.util.Map;
  * to a notification page with a message about the successful or unsuccessful
  * placing of the order.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class OrderCarCommand implements ActionCommand {

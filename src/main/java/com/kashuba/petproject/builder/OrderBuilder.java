@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * The type Order builder.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class OrderBuilder {
@@ -22,7 +22,7 @@ public class OrderBuilder {
      *
      * @param orderParameters the order parameters
      * @return the order
-     * @author Balashevich Gleb
+     * @author Kiryl Kashuba
      */
     public static Order buildOrder(Map<String, Object> orderParameters) {
         Order order = new Order();

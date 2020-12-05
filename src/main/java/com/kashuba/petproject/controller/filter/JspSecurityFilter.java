@@ -14,7 +14,7 @@ import java.io.IOException;
  * The filter's task is to redirect direct calls to jsp pages located in the package
  * 'jsp' of webapp to the index page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @WebFilter(urlPatterns = "/jsp/*")

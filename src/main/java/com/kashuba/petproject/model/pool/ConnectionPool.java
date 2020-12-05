@@ -19,7 +19,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * issuance of connections for processing queries to find, update, delete
  * and add items to the database.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class ConnectionPool {

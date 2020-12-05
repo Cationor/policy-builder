@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  * <p>
  * Loads an image into a page to display it to the client
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @WebServlet(urlPatterns = "/image/*")

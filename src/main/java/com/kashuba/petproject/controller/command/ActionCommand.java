@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * inversion is implemented, which allows the controller that redirects
  * the request to dynamically determine the command to be executed.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface ActionCommand {

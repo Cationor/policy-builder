@@ -16,7 +16,7 @@ import java.util.Properties;
  * <p>
  * Sends letters from the e-mail of the booking service to the e-mail of users.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class MailSender {

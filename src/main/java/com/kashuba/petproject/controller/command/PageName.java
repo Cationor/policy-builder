@@ -6,7 +6,7 @@ package com.kashuba.petproject.controller.command;
  * An enumeration that describes all pages used by the application to
  * provide forwarding as a result of request processing
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public enum PageName {

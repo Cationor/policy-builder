@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Processes a request to change the site locale. After changing the locale,
  * a forwarding to the current page occurs.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class SwitchLocaleCommand implements ActionCommand {

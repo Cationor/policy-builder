@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * Custom tag. Processes a list of orders for displaying them to the administrator,
  * adds a pagination view for more convenient viewing of the list.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @SuppressWarnings("serial")

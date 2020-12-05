@@ -19,7 +19,7 @@ import java.io.IOException;
  * <p>
  * Controller for processing requests coming from the client side.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @WebServlet(urlPatterns = "/process_controller")

@@ -7,7 +7,7 @@ package com.kashuba.petproject.model.entity;
  * him with the choice of a car, View stores data on the images
  * of a particular car to provide visualization on the client side.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class CarView extends Entity{

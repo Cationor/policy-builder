@@ -8,7 +8,7 @@ import com.kashuba.petproject.model.entity.Order;
  * <p>
  * Indicates methods for sending notifications to users.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface ClientNotificationService {

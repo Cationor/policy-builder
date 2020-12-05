@@ -32,7 +32,7 @@ import java.util.Map;
  * requested cars. In the event that no cars were found according to these
  * criteria, an appropriate message is displayed to the client.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class FindAvailableCarsCommand implements ActionCommand {

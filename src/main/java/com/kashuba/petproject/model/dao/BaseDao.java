@@ -21,7 +21,7 @@ import java.util.Optional;
  * for closing a connection, statement, change autocommit and rolling back a transaction.
  *
  * @param <T> the type parameter
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface BaseDao<T extends Entity> {

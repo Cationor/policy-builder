@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * Custom tag. Processes a list of cars for displaying them to the client,
  * adds a pagination view for more convenient viewing of the list.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @SuppressWarnings("serial")

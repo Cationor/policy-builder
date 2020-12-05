@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * <p>
  * Hashes the password using the SHA-256 hashing method.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class PasswordEncryption {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * Forwarding a user to the login page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class LoginPageCommand implements ActionCommand {

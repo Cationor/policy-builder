@@ -28,7 +28,7 @@ import java.util.Map;
  * which displays the list of requested cars. In the event that no cars were found
  * according to these criteria, an appropriate message is displayed to the administrator.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class FilterCarsCommand implements ActionCommand {

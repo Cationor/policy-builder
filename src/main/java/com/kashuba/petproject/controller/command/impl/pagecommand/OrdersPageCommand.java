@@ -25,7 +25,7 @@ import java.util.List;
  * If the user is an client, forwarding occurs to client version of orders page and
  * information about his orders is sent.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class OrdersPageCommand implements ActionCommand {

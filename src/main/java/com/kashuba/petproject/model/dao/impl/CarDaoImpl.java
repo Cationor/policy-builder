@@ -19,7 +19,7 @@ import java.util.*;
  * The Car dao.
  * {@code CarDao} interface implementation
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see CarDao
  */

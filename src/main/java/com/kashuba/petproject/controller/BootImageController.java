@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * <p>
  * Process a request to upload an image to the server
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @WebServlet(urlPatterns = "/boot_image_controller/*")

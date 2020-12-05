@@ -19,7 +19,7 @@ import java.util.*;
  *
  * {@code OrderDao} interface implementation
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see OrderDao
  */

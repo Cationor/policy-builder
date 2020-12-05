@@ -26,7 +26,7 @@ import java.util.List;
  * In the event that no users were found according to these criteria,
  * an appropriate message is displayed to the administrator.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class FilterUsersCommand implements ActionCommand {

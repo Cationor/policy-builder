@@ -10,7 +10,7 @@ import java.util.Arrays;
  * of booking cars, for financial reporting, to track the work of the service.
  * The main unit of the business logic of the application.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class Order extends Entity {

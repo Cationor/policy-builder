@@ -11,7 +11,7 @@ import java.util.Map;
  * Checks the parameters of the User entity for their
  * compliance with certain criteria.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class UserValidator {

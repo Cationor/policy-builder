@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * It is called if it was not possible to determine the command
  * received in the request. User is forwarding to the error404 page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class EmptyCommand implements ActionCommand {

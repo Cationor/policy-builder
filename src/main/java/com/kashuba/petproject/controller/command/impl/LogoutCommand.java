@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Processes a request to terminate a session with a user. The session is
  * no longer valid, the user is forwarding to the home page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class LogoutCommand implements ActionCommand {

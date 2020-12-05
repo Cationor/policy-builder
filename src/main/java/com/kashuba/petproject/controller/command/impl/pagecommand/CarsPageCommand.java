@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * if the user is an administrator, forwarding occurs to admin version of cars page
  * if the user is an client or guest, forwarding occurs to client version of cars page
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class CarsPageCommand implements ActionCommand {

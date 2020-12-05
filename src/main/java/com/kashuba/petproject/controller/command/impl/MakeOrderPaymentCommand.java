@@ -29,7 +29,7 @@ import java.util.Map;
  * is redirected back to the payment page with a message about an unsuccessful attempt
  * to make a payment.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class MakeOrderPaymentCommand implements ActionCommand {

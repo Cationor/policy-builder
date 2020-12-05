@@ -7,7 +7,7 @@ package com.kashuba.petproject.controller;
  * In addition to the path, the router contains information about the type
  * of transition redirect or forward
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class Router {

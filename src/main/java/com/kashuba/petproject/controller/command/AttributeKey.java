@@ -6,7 +6,7 @@ package com.kashuba.petproject.controller.command;
  * The class is used to store the names of the attributes placed in the {@code HttpSession}
  * or in the {@code HttpServletRequest} when processing the request.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class AttributeKey {

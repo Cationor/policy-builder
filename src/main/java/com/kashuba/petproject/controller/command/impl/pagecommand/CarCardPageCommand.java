@@ -29,7 +29,7 @@ import java.util.Optional;
  * if the car has become unavailable, the forwarding is carried out to the notification page
  * in case of an error in receiving data, it will be forwarding to the error page
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class CarCardPageCommand implements ActionCommand {

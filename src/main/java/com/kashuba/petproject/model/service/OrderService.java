@@ -11,7 +11,7 @@ import java.util.Map;
  * <p>
  * Indicates methods for processing information related to orders.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface OrderService {

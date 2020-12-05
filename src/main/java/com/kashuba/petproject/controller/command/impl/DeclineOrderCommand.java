@@ -30,7 +30,7 @@ import java.util.List;
  * In the event that the declining of the order was successful, the client is notified that his
  * order has been declined.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class DeclineOrderCommand implements ActionCommand {

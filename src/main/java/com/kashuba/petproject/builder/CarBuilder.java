@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * The type Car builder.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class CarBuilder {

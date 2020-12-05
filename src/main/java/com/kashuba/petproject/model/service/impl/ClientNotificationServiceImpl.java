@@ -12,7 +12,7 @@ import java.util.StringJoiner;
  * <p>
  * Implements an interface ClientNotificationService for sending notifications to users.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see ClientNotificationService
  */

@@ -12,7 +12,7 @@ import java.util.Optional;
  * <p>
  * Indicates methods for processing information related to cars.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public interface CarService {

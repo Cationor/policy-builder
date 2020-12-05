@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * <p>
  * Forwarding a user to the home page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class HomePageCommand implements ActionCommand {

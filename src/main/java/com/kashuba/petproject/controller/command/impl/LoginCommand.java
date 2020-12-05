@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  * If authorization was not successful, the user is forwarding to the login page with
  * a message about unsuccessful authorization.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class LoginCommand implements ActionCommand {

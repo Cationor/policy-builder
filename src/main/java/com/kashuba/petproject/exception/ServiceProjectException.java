@@ -6,7 +6,7 @@ package com.kashuba.petproject.exception;
  * Sub class class Exceptions. It's checked, used when exceptions
  * occur in the Service application layer
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class ServiceProjectException extends Exception {

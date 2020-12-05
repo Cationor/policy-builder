@@ -6,7 +6,7 @@ package com.kashuba.petproject.exception;
  * Sub class class Exceptions. It's checked, used when exceptions
  * occur in the DAO application layer
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class DaoProjectException extends Exception {

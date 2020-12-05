@@ -24,7 +24,7 @@ import java.util.Map;
  * <p>
  * Implements an interface OrderService for processing order-related data.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see OrderService
  */

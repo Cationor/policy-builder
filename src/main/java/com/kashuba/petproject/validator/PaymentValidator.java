@@ -10,7 +10,7 @@ import java.util.Map;
  * <p>
  * Verifies the payment data entered by the client when paying for the order.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class PaymentValidator {

@@ -10,7 +10,7 @@ import java.time.ZonedDateTime;
  * <p>
  * Converts a {@code LocalDate} object to a long value and vice versa.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class DateConverter {

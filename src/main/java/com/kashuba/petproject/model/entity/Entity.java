@@ -7,7 +7,7 @@ import java.io.Serializable;
  * <p>
  * Base class-marker for identifying the ownership of objects in the current application.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public abstract class Entity implements Serializable, Cloneable {

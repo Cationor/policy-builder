@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Before forwarding receive index of paid order from session
  * find order from order list and put it into session for further processing.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class PaymentPageCommand implements ActionCommand {

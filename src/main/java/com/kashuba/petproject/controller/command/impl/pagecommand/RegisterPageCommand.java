@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * Forwarding not authorized and not registered user to the register page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class RegisterPageCommand implements ActionCommand {

@@ -10,7 +10,7 @@ import com.kashuba.petproject.controller.command.impl.pagecommand.*;
  * Describes all commands available for processing by the application.
  * Used by the {@code CommandProvider}
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public enum CommandType {

@@ -12,7 +12,7 @@ import java.util.Map;
  * Extends the interface of the {@code BaseDao}, supplementing it with specific
  * methods for the interaction of the application with Car entities in the database
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see BaseDao
  */

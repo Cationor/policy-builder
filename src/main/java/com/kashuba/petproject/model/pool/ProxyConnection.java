@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
  * <p>
  * Described to protect the connection from unauthorized closing.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 class ProxyConnection implements Connection {

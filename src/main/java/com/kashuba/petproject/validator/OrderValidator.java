@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Checks the parameters of the Order entity for their
  * compliance with certain criteria.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class OrderValidator {

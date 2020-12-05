@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * After processing, the administrator is forwarding to the users page where
  * he is informed about the successful or unsuccessful status change to the client.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class UpdateClientStatusCommand implements ActionCommand {

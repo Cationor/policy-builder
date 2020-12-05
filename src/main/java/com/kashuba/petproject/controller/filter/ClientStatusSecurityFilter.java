@@ -29,7 +29,7 @@ import java.util.Set;
  * the request is searched for in the received set, if such a command is found, control
  * is passed to the next filter, if not, it is redirected to the notification page.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 @WebFilter(urlPatterns = "/CarBook")

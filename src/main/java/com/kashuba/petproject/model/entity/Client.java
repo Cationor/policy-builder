@@ -9,7 +9,7 @@ import java.util.Arrays;
  * with the necessary information for the implementation of actions to order cars,
  * access to various application options.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see User
  */

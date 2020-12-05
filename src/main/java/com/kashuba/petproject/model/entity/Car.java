@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Is the subject area of the service.
  * Describes the cars rented by clients
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class Car extends Entity {

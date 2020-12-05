@@ -30,7 +30,7 @@ import java.util.Map;
  * event that no orders were found according to these criteria, an appropriate
  * message is displayed to the administrator.
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class FilterOrdersCommand implements ActionCommand {

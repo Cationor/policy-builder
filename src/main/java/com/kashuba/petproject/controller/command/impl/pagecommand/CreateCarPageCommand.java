@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * forwarding a user with the admin role to the create car page
  *
- * @author Balashevich Gleb
+ * @author Kiryl Kashuba
  * @version 1.0
  */
 public class CreateCarPageCommand implements ActionCommand {
