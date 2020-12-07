@@ -64,15 +64,5 @@
                 </c:choose>
             </ul>
         </div>
-        <div class="col" id="lang_switch" style="max-width: 60px">
-            <div class="row">
-                <div class="col text-right"><a href="CarBook?command=switch_locale&locale=ru">
-                    <fmt:message key="title.locale_ru"/></a></div>
-            </div>
-            <div class="row">
-                <div class="col text-right"><a href="CarBook?command=switch_locale&locale=en">
-                    <fmt:message key="title.locale_en"/></a></div>
-            </div>
-        </div>
     </div>
 </nav>
