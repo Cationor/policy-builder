@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
  * the {@code ActionCommand} interface, expected by the controller to perform
  * operations with the requests of the application clients.
  *
- * @author Kashuba Kiry
+ * @author Kashuba Kiryl
  * @version 1.0
  */
 public class CommandProvider {
