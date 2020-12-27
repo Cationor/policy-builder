@@ -18,7 +18,7 @@ import java.util.*;
  * <p>
  * Implements interface {@code CarService} handles car data processing.
  *
- * @author Kashuba Kiryl
+ * @author Kiryl Kashuba
  * @version 1.0
  * @see CarService
  */
