@@ -27,7 +27,7 @@ import java.util.Map;
  * (version for the administrator). If the car was not added, the administrator is forwarding back
  * to the create car page.
  *
- * @author Kiryl Kashub
+ * @author Kiryl Kashubaa
  * @version 1.0
  */
 public class AddCarCommand implements ActionCommand {
