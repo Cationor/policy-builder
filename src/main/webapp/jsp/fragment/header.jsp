@@ -41,27 +41,11 @@
                     </li>
                 </c:if>
                 <li class="nav-item nav-link js-scroll-trigger" role="presentation">
-                    <a class="nav-link js-scroll-trigger" href="CarBook?command=move_cars_page">
-                        <fmt:message key="label.cars"/>
+                    <a class="nav-link js-scroll-trigger"
+                       href="CarBook?command=move_register_page">
+                        <fmt:message key="label.login"/>
                     </a>
                 </li>
-                <c:choose>
-                    <c:when test="${empty sessionScope.user.role}">
-                        <li class="nav-item nav-link js-scroll-trigger" role="presentation">
-                            <a class="nav-link js-scroll-trigger"
-                               href="CarBook?command=move_login_page">
-                                <fmt:message key="label.login"/>
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item nav-link js-scroll-trigger" role="presentation">
-                            <a class="nav-link js-scroll-trigger" href="CarBook?command=log_out_user">
-                                <fmt:message key="label.logout"/>
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
             </ul>
         </div>
     </div>
