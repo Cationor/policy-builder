@@ -121,18 +121,11 @@
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column"><label class="col-form-label">
                     <fmt:message key="register.phone_number"/></label></div>
-                <div class="col-sm-4 input-column">
-                    <input class="form-control" name="phone_number" type="text"
-                           pattern="^(\+)?([-_():\s]?\d[-_():\s]?){12}?$" value="${registerParameters.get("phone_number")}"
-                           title="<fmt:message key="register.phone_number"/>"
-                           onchange="this.setCustomValidity('')"
-                           oninvalid="this.setCustomValidity('<fmt:message key="register.phone_number.validation"/>')">
+                <div class="col-4 input-column">
+                    <input class="form-control form-control--date" type="date" name="date_from" id="df"
+                           value="${sessionScope.carParameters.get("date_from")}" required onchange="this.setCustomValidity('')"
+                           oninvalid="this.setCustomValidity('<fmt:message key="cars.date_from.validation"/>')">
                 </div>
-                <c:if test='${not empty registerParameters && empty registerParameters.get("phone_number")}'>
-                    <div class="col-sm-4 input-column">
-                        <label class="alert-danger"><fmt:message key="register.phone_number"/></label>
-                    </div>
-                </c:if>
             </div>
             <input type="hidden" name="command" value="register_client">
             <button class="btn btn-light submit-button" type="submit" id="butt">
