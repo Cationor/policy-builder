@@ -118,6 +118,7 @@
                     </div>
                 </c:if>
             </div>
+
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column"><label class="col-form-label">
                     <fmt:message key="register.phone_number"/></label></div>
@@ -127,6 +128,18 @@
                            oninvalid="this.setCustomValidity('<fmt:message key="cars.date_from.validation"/>')">
                 </div>
             </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Collision coverage</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Comprehensive coverage</label>
+            </div>
+
+
             <input type="hidden" name="command" value="register_client">
             <button class="btn btn-light submit-button" type="submit" id="butt">
                 <fmt:message key="register.register"/></button>

@@ -29,7 +29,7 @@ import java.util.Map;
  * not been verified, the user is redirected back to the registration page to re-enter
  * the incorrectly entered parameters.
  *
- * @author Kiryl Kashuba
+ * @author Kiryl Kashu
  * @version 1.0
  */
 public class RegisterClientCommand implements ActionCommand {
