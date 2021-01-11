@@ -31,7 +31,7 @@
             </c:if>
             <div class="form-row form-group" style="margin: 0px -5px 15px;">
                 <div class="col-sm-4 label-column">
-                    <label class="col-form-label"><fmt:message key="register.email"/> &#8432;</label></div>
+                    <label class="col-form-label">Registered object</label></div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="email" type="email"
                            autofocus required value="${registerParameters.get("email")}"
@@ -47,7 +47,7 @@
             </div>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="col-form-label"><fmt:message key="register.password"/> &#8432;</label></div>
+                    <label class="col-form-label">Sum insured</label></div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="password" type="password" minlength="8" maxlength="30" id="pass"
                            required pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}"
@@ -61,7 +61,7 @@
             </div>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="col-form-label"><fmt:message key="register.confirm_password"/> &#8432;</label></div>
+                    <label class="col-form-label">Contract currency</label></div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="confirm_password" type="password" minlength="8" maxlength="30" id="passConf"
                            required pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{7,}"
@@ -72,7 +72,7 @@
             </div>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="col-form-label"><fmt:message key="register.first_name"/> &#8432;</label></div>
+                    <label class="col-form-label">First name</label></div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="first_name" type="text"
                            pattern="[a-zA-Zа-яА-Я-]{1,20}" required value="${registerParameters.get("first_name")}"
@@ -87,7 +87,7 @@
             </div>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="col-form-label label-column"><fmt:message key="register.second_name"/> &#8432;</label>
+                    <label class="col-form-label label-column">Second name</label>
                 </div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="second_name" type="text"
@@ -103,7 +103,7 @@
             </div>
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column"><label class="col-form-label">
-                    <fmt:message key="register.driver_license"/> &#8432;</label></div>
+                    Insurance coverage area</label></div>
                 <div class="col-sm-4 input-column">
                     <input class="form-control" name="driver_license" type="text"
                            pattern="([0-9]?[a-zA-Z]{2}\s?[0-9]{6})"
@@ -119,9 +119,11 @@
                 </c:if>
             </div>
 
+
+
             <div class="form-row form-group">
                 <div class="col-sm-4 label-column"><label class="col-form-label">
-                    <fmt:message key="register.phone_number"/></label></div>
+                    Term of validity</label></div>
                 <div class="col-4 input-column">
                     <input class="form-control form-control--date" type="date" name="date_from" id="df"
                            value="${sessionScope.carParameters.get("date_from")}" required onchange="this.setCustomValidity('')"
@@ -129,20 +131,21 @@
                 </div>
             </div>
 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">Collision coverage</label>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column"> <label class="col-form-label">Insurance type</label></div>
+                <div class="col-sm-4 input-column"> <select class="form-control" name="order_status" id="orderSelect">
+                    <option value="">Collision coverage</option>
+                    <option value="COMPLETED">Comprehensive coverage</option>
+                </select></div>
             </div>
 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">Comprehensive coverage</label>
-            </div>
+
+
 
 
             <input type="hidden" name="command" value="register_client">
             <button class="btn btn-light submit-button" type="submit" id="butt">
-                <fmt:message key="register.register"/></button>
+                Checkout</button>
         </form>
     </div>
     </div>
