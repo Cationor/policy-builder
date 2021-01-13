@@ -1,10 +1,12 @@
 package com.kashuba.petproject.controller.command.impl;
 
+import com.kashuba.petproject.builder.PolicyBuilder;
 import com.kashuba.petproject.controller.Router;
 import com.kashuba.petproject.controller.command.ActionCommand;
 import com.kashuba.petproject.controller.command.AttributeKey;
 import com.kashuba.petproject.controller.command.PageName;
 import com.kashuba.petproject.exception.ServiceProjectException;
+import com.kashuba.petproject.model.entity.Policy;
 import com.kashuba.petproject.model.service.ClientNotificationService;
 import com.kashuba.petproject.model.service.UserService;
 import com.kashuba.petproject.model.service.impl.ClientNotificationServiceImpl;
@@ -37,38 +39,25 @@ public class RegisterClientCommand implements ActionCommand {
 
     @Override
     public Router execute(HttpServletRequest request) {
-        UserService userService = new UserServiceImpl();
-        ClientNotificationService clientNotificationService;
         Map<String, String> clientParameters = new HashMap<>();
-        clientParameters.put(ParameterKey.EMAIL, request.getParameter(ParameterKey.EMAIL));
-        clientParameters.put(ParameterKey.PASSWORD, request.getParameter(ParameterKey.PASSWORD));
-        clientParameters.put(ParameterKey.CONFIRM_PASSWORD, request.getParameter(ParameterKey.CONFIRM_PASSWORD));
+        clientParameters.put(ParameterKey.REGISTERED_OBJECT, request.getParameter(ParameterKey.REGISTERED_OBJECT));
+        clientParameters.put(ParameterKey.SUM_INSURED, request.getParameter(ParameterKey.SUM_INSURED));
+        clientParameters.put(ParameterKey.CONTRACT_CURRENCY, request.getParameter(ParameterKey.CONTRACT_CURRENCY));
         clientParameters.put(ParameterKey.FIRST_NAME, request.getParameter(ParameterKey.FIRST_NAME));
         clientParameters.put(ParameterKey.SECOND_NAME, request.getParameter(ParameterKey.SECOND_NAME));
-        clientParameters.put(ParameterKey.DRIVER_LICENSE, request.getParameter(ParameterKey.DRIVER_LICENSE));
-        clientParameters.put(ParameterKey.PHONE_NUMBER, request.getParameter(ParameterKey.PHONE_NUMBER));
+        clientParameters.put(ParameterKey.INSURANCE_COVERAGE_AREA, request.getParameter(ParameterKey.INSURANCE_COVERAGE_AREA));
+        clientParameters.put(ParameterKey.TERM_OF_VALIDITY, request.getParameter(ParameterKey.TERM_OF_VALIDITY));
+        clientParameters.put(ParameterKey.INSURANCE_TYPE, request.getParameter(ParameterKey.INSURANCE_TYPE));
         Router router;
 
-        try {
-            if (!userService.existUser(clientParameters.get(ParameterKey.EMAIL))) {
-                if (userService.add(clientParameters)) {
-                    clientNotificationService = new ClientNotificationServiceImpl();
-                    clientNotificationService.registerMailNotification(clientParameters.get(ParameterKey.EMAIL),
-                            clientParameters.get(ParameterKey.FIRST_NAME), request.getRequestURL().toString());
-                    request.setAttribute(AttributeKey.SUCCESSFUL_REGISTRATION, true);
-                    router = new Router(PageName.NOTIFICATION.getPath());
-                } else {
-                    request.setAttribute(AttributeKey.REGISTER_PARAMETERS, clientParameters);
-                    router = new Router(PageName.REGISTER.getPath());
-                }
-            } else {
-                request.setAttribute(AttributeKey.USER_EXIST, true);
-                router = new Router(PageName.REGISTER.getPath());
-            }
-        } catch (ServiceProjectException e) {
-            logger.log(Level.ERROR, "User Email" + clientParameters.get(ParameterKey.EMAIL), e);
-            router = new Router(PageName.ERROR_500.getPath());
-        }
+
+
+//                    PolicyBuilder.buildPolicy(clientParameters);
+//                    request.setAttribute("policyList", buildingPolicy);
+                    Policy policy = PolicyBuilder.buildPolicy(clientParameters);
+                    request.setAttribute("policyList", policy);
+                    router = new Router(PageName.LOGIN.getPath()); // Тут вписать путь на JSP с полисом
+
 
         return router;
     }

@@ -23,51 +23,26 @@
     <div class="row register-form" id="login_form">
     <div class="col-md-8 offset-md-2">
         <form action="CarBook" method="post" class="shadow-lg custom-form" style="font-family: Nunito">
-            <label id="labelPage">
-                <fmt:message key="label.login"/>
-            </label>
-            <c:if test="${not empty successfulAuthorization && !successfulAuthorization}">
-                <label class="alert-danger"><fmt:message key="login.not_authorized"/></label>
-            </c:if>
+            <label id="labelPage">Договор страхования имущества</label>
+
             <div class="form-row form-group">
-                <div class="col-2"></div>
-                <div class="col-2 label-column">
-                    <label class="col-form-label"><fmt:message key="login.email"/></label>
-                </div>
-                <div class="col-4 input-column">
-                    <input class="form-control" name="email" type="email" autofocus required
-                           minlength="7" maxlength="255"
-                           title="<fmt:message key="login.email"/>"
-                           onchange="this.setCustomValidity('')"
-                           oninvalid="this.setCustomValidity('<fmt:message key="login.email.validation"/>')">
-                </div>
-                <div class="col-4"></div>
-                <div class="col-2"></div>
-                <div class="col-2 label-column">
-                    <label class="col-form-label"><fmt:message key="login.password"/></label>
-                </div>
-                <div class="col-4 input-column">
-                    <input class="form-control" name="password" type="password" required
-                           pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,30}" minlength="8"
-                           maxlength="30"
-                           title="<fmt:message key="login.password"/>"
-                           onchange="this.setCustomValidity('')"
-                           oninvalid="this.setCustomValidity('<fmt:message key="login.password.validation"/>')">
-                </div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
-                <div class="col-2 input-column" id="logBut">
-                    <input type="hidden" name="command" value="log_in_user">
-                    <button class="submit-button" type="submit" id="butt">
-                        <fmt:message key="login.log_in"/></button>
-                </div>
-                <div class="col-5"></div>
-                <div class="col-4"></div>
-                <div class="col-4 input-column" id="regHref">
-                    <a class="shadow-sm" href="CarBook?command=move_register_page">
-                        <fmt:message key="login.no_account"/></a>
-                </div>
-                <div class="col-4"></div>
+
+${requestScope.policyList.firstName} ${requestScope.policyList.secondName}, именующийся в дальнейшем как "страховщик",
+    заключил договор,в дальнейшем "Договор", с компанией EIS|GROUP о нижеследующем
+    <label id="labelPage">Предмет договора</label>
+    Согласно настоящему договору Страховщик обязается при наступлении одного из обусловленных в договоре
+    ${requestScope.policyList.termOfValidity} страховых случаев, повлекших утрату или повреждение имущества
+    типа ${requestScope.policyList.registeredObject}, именуемого далее "Застрахованное имущество", выплатить
+    возмещение в размере "${requestScope.policyList.sumInsured} ${requestScope.policyList.contractCurrency}".
+    Страховка работает только территории ${requestScope.policyList.insuranceCoverageArea} и до
+    ${requestScope.policyList.termOfValidity}
+
+                Дата                   Роспись
+
+
+
+
+
             </div>
         </form>
     </div>

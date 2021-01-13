@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
                     long phoneNumber = Long.parseLong(normalizedPhone);
                     preparedClientParameters.put(ParameterKey.EMAIL, clientParameters.get(ParameterKey.EMAIL).toLowerCase());
                     preparedClientParameters.put(ParameterKey.PASSWORD, encryptedPassword);
-                    preparedClientParameters.put(ParameterKey.ROLE, User.Role.CLIENT);
+                  //  preparedClientParameters.put(ParameterKey.ROLE, User.Role.CLIENT);
                     preparedClientParameters.put(ParameterKey.FIRST_NAME, clientParameters.get(ParameterKey.FIRST_NAME));
                     preparedClientParameters.put(ParameterKey.SECOND_NAME, clientParameters.get(ParameterKey.SECOND_NAME));
                     preparedClientParameters.put(ParameterKey.DRIVER_LICENSE, clientParameters.get(ParameterKey.DRIVER_LICENSE));

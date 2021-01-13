@@ -38,10 +38,7 @@ public class UserValidator {
             isParametersCorrect = false;
             clientParameters.put(ParameterKey.EMAIL, EMPTY_VALUE);
         }
-        if (!validatePasswords(clientParameters.get(ParameterKey.PASSWORD), clientParameters.get(ParameterKey.CONFIRM_PASSWORD))) {
-            isParametersCorrect = false;
-            clientParameters.put(ParameterKey.PASSWORD, EMPTY_VALUE);
-        }
+
         if (!validateName(clientParameters.get(ParameterKey.FIRST_NAME))) {
             isParametersCorrect = false;
             clientParameters.put(ParameterKey.FIRST_NAME, EMPTY_VALUE);
@@ -53,10 +50,6 @@ public class UserValidator {
         if (!validateDriverLicense(clientParameters.get(ParameterKey.DRIVER_LICENSE))) {
             isParametersCorrect = false;
             clientParameters.put(ParameterKey.DRIVER_LICENSE, EMPTY_VALUE);
-        }
-        if (!validatePhoneNumber(clientParameters.get(ParameterKey.PHONE_NUMBER))) {
-            isParametersCorrect = false;
-            clientParameters.put(ParameterKey.PHONE_NUMBER, EMPTY_VALUE);
         }
 
         return isParametersCorrect;

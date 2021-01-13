@@ -14,14 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * The Process controller.
- * <p>
- * Controller for processing requests coming from the client side.
- *
- * @author Kiryl Kashuba
- * @version 1.0
- */
 @WebServlet(urlPatterns = "/process_controller")
 public class ProcessController extends HttpServlet {
 
@@ -33,18 +25,7 @@ public class ProcessController extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
-     * Process request.
-     * Receives a request from the client, retrieves the name of the requested command,
-     * searches for this command from the list of existing ones, and redirects the
-     * request to the command for processing. Based on the processing results, it
-     * generates a response and redirects or forwards to the required page.
-     *
-     * @param request  the request
-     * @param response the response
-     * @throws ServletException the servlet exception
-     * @throws IOException      the io exception
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ActionCommand command = CommandProvider.defineCommand(request.getParameter(ParameterKey.COMMAND));
         Router router = command.execute(request);
