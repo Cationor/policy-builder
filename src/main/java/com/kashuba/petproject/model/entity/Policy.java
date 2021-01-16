@@ -1,5 +1,6 @@
 package com.kashuba.petproject.model.entity;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Policy extends Entity {
@@ -10,7 +11,7 @@ public class Policy extends Entity {
     private String firstName;
     private String secondName;
     private String insuranceCoverageArea;
-    private long termOfValidity;
+    private LocalDate termOfValidity;
     private String insuranceType;
 
     public String getRegisteredObject() { return registeredObject; }
@@ -39,9 +40,9 @@ public class Policy extends Entity {
         this.insuranceCoverageArea = insuranceCoverageArea;
     }
 
-    public long getTermOfValidity() { return termOfValidity; }
+    public LocalDate getTermOfValidity() { return termOfValidity; }
 
-    public void setTermOfValidity(long termOfValidity) { this.termOfValidity = termOfValidity; }
+    public void setTermOfValidity(LocalDate termOfValidity) { this.termOfValidity = termOfValidity; }
 
     public String getInsuranceType() { return insuranceType; }
 
@@ -80,7 +81,7 @@ public class Policy extends Entity {
         result += 37 * result + (insuranceCoverageArea == null ? 0 : insuranceCoverageArea.hashCode());
         result += 37 * result + (insuranceType == null ? 0 : insuranceType.hashCode());
         result += 37 * result + sumInsured;
-        result += 37 * result + termOfValidity;
+        result += 37 * result + (termOfValidity == null ? 0 : termOfValidity.hashCode());
 
         return result;
     }

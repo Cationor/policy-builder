@@ -1,5 +1,9 @@
 package com.kashuba.petproject.controller.command.impl;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.kashuba.petproject.controller.Router;
 import com.kashuba.petproject.controller.command.ActionCommand;
 import com.kashuba.petproject.controller.command.AttributeKey;
@@ -15,9 +19,13 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.kashuba.petproject.util.ParameterKey.*;
 
 /**
  * The Update car property command.
@@ -36,29 +44,58 @@ public class UpdateCarPropertyCommand implements ActionCommand {
 
     @Override
     public Router execute(HttpServletRequest request) {
-        CarService carService = new CarServiceImpl();
-        Map<String, String> carParameters = new HashMap<>();
-        carParameters.put(ParameterKey.RENT_COST, request.getParameter(ParameterKey.RENT_COST));
-        carParameters.put(ParameterKey.CAR_AVAILABLE, request.getParameter(ParameterKey.CAR_AVAILABLE));
-        int carIndex = Integer.parseInt(request.getParameter(ParameterKey.CAR_INDEX));
-        HttpSession session = request.getSession();
-        Car updatingCar = ((ArrayList<Car>) session.getAttribute(AttributeKey.CAR_LIST)).get(carIndex);
-        Router router;
+//        CarService carService = new CarServiceImpl();
+//        Map<String, String> carParameters = new HashMap<>();
+//        carParameters.put(RENT_COST, request.getParameter(RENT_COST));
+//        carParameters.put(CAR_AVAILABLE, request.getParameter(CAR_AVAILABLE));
+//        int carIndex = Integer.parseInt(request.getParameter(CAR_INDEX));
+//        HttpSession session = request.getSession();
+//        Car updatingCar = ((ArrayList<Car>) session.getAttribute(AttributeKey.CAR_LIST)).get(carIndex);
+//        Router router;
+//
+//        try {
+//            if (carService.updateCar(updatingCar, carParameters)) {
+//                request.setAttribute(AttributeKey.CAR_UPDATED, true);
+//            } else {
+//                session.removeAttribute(AttributeKey.CAR_LIST);
+//                request.setAttribute(AttributeKey.CAR_UPDATED, false);
+//            }
+//            router = new Router(PageName.ADMIN_CARS.getPath());
+//        } catch (ServiceProjectException e) {
+//            session.removeAttribute(AttributeKey.CAR_LIST);
+//            logger.log(Level.ERROR, "Number of parameters" + carParameters.size(), e);
+//            router = new Router(PageName.ERROR_500.getPath());
+//        }
+//
+//        return router;
+//    }
+//}
+        Document document = new Document();
+
 
         try {
-            if (carService.updateCar(updatingCar, carParameters)) {
-                request.setAttribute(AttributeKey.CAR_UPDATED, true);
-            } else {
-                session.removeAttribute(AttributeKey.CAR_LIST);
-                request.setAttribute(AttributeKey.CAR_UPDATED, false);
-            }
-            router = new Router(PageName.ADMIN_CARS.getPath());
-        } catch (ServiceProjectException e) {
-            session.removeAttribute(AttributeKey.CAR_LIST);
-            logger.log(Level.ERROR, "Number of parameters" + carParameters.size(), e);
-            router = new Router(PageName.ERROR_500.getPath());
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Policy.pdf"));
+            System.out.println(" qweqweqweqwe ");
+            document.open();
+            document.add(new Paragraph("Welcome"));
+            document.close();
+            writer.close();
+        }
+        catch (DocumentException e){
+            e.printStackTrace();
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
         }
 
+
+        Router router;
+        router = new Router(PageName.HOME.getPath());
         return router;
     }
 }
+
+
+
+
+

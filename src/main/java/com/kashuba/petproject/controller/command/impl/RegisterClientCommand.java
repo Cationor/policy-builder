@@ -1,5 +1,13 @@
 package com.kashuba.petproject.controller.command.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.kashuba.petproject.builder.JsonBuilder;
+import com.kashuba.petproject.builder.PdfBuilder;
 import com.kashuba.petproject.builder.PolicyBuilder;
 import com.kashuba.petproject.controller.Router;
 import com.kashuba.petproject.controller.command.ActionCommand;
@@ -17,6 +25,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,10 +62,17 @@ public class RegisterClientCommand implements ActionCommand {
 
 
 
-//                    PolicyBuilder.buildPolicy(clientParameters);
-//                    request.setAttribute("policyList", buildingPolicy);
-                    Policy policy = PolicyBuilder.buildPolicy(clientParameters);
-                    request.setAttribute("policyList", policy);
+        Policy policy = PolicyBuilder.buildPolicy(clientParameters);
+        request.setAttribute("policyList", policy);
+
+        PdfBuilder.createPdf();
+
+        String json = JsonBuilder.createJson(policy);
+        request.setAttribute("gsonKey", json);
+
+//        Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+//        String json = GSON.toJson(policy);
+//        System.out.println(json);
                     router = new Router(PageName.LOGIN.getPath()); // Тут вписать путь на JSP с полисом
 
 

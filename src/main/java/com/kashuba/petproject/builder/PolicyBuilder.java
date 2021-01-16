@@ -16,10 +16,9 @@ public class PolicyBuilder  {
 
     public static Policy buildPolicy(Map<String, String> clientParameters) {
         Policy buildingPolicy = new Policy();
-        System.out.println(clientParameters.get(ParameterKey.TERM_OF_VALIDITY));
-        System.out.println(clientParameters.get(ParameterKey.FIRST_NAME));
+
         LocalDate termOfValidity = LocalDate.parse(clientParameters.get(ParameterKey.TERM_OF_VALIDITY));
-        buildingPolicy.setTermOfValidity(DateConverter.convertToLong(termOfValidity));
+        buildingPolicy.setTermOfValidity(termOfValidity);
         buildingPolicy.setRegisteredObject((String) clientParameters.get(ParameterKey.REGISTERED_OBJECT));
         buildingPolicy.setSumInsured(Integer.parseInt(clientParameters.get(ParameterKey.SUM_INSURED)));
         buildingPolicy.setContractCurrency((String) clientParameters.get(ParameterKey.CONTRACT_CURRENCY));
